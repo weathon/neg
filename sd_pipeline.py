@@ -804,6 +804,7 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
         skip_layer_guidance_stop: float = 0.2,
         skip_layer_guidance_start: float = 0.01,
         mu: Optional[float] = None,
+        avoidance_factor = 0,
     ):
         r"""
         Function invoked when calling the pipeline for generation.
@@ -1046,6 +1047,28 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
             else:
                 self._joint_attention_kwargs.update(ip_adapter_image_embeds=ip_adapter_image_embeds)
 
+        # uncond_embed, pooled_uncon_embed = self._get_clip_prompt_embeds("")
+        (
+            uncond_embed,
+            _,
+            pooled_uncon_embed,
+            _,
+        ) = self.encode_prompt(
+            prompt="",
+            prompt_2="",
+            prompt_3="",
+            negative_prompt="",
+            negative_prompt_2="",
+            negative_prompt_3="",
+            do_classifier_free_guidance=False,
+            device=device,
+            clip_skip=self.clip_skip,
+            num_images_per_prompt=num_images_per_prompt,
+            max_sequence_length=max_sequence_length,
+            lora_scale=lora_scale,
+        )
+
+
         # 7. Denoising loop
         self.neg_maps = []
         with self.progress_bar(total=num_inference_steps) as progress_bar:
@@ -1066,13 +1089,41 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                     joint_attention_kwargs=self.joint_attention_kwargs,
                     return_dict=False,
                 )[0]
+                
+                
+                # print(uncon_noise_pred.shape, noise_pred.shape, uncond_embed.shape, pooled_uncon_embed.shape, latent_model_input.shape)
+                
                 self.neg_maps.append(torch.stack([block.attn.processor.attn_weight for block in self.transformer.transformer_blocks]))
-                # weight_map = self.neg_maps[-1].mean((0,1,2,3)).reshape(width//16, height//16) * 1e4
+                weight_map = self.neg_maps[-1].mean((0,1,2,3)).reshape(width//16, height//16) * avoidance_factor
+                weight_map = torch.nn.functional.interpolate(
+                    weight_map.unsqueeze(0).unsqueeze(0),
+                    size=(height // 8, width // 8),
+                    mode="bilinear",
+                    align_corners=False,
+                ).squeeze(0).squeeze(0)
 
+                uncon_noise_pred = self.transformer(
+                    hidden_states=latent_model_input[0:1],
+                    timestep=timestep[0:1],
+                    encoder_hidden_states=uncond_embed,
+                    pooled_projections=pooled_uncon_embed,
+                    joint_attention_kwargs=self.joint_attention_kwargs,
+                    return_dict=False,
+                )[0]
+                
                 # perform guidance
                 if self.do_classifier_free_guidance:
-                    noise_pred_uncond, noise_pred_text = noise_pred.chunk(2)
-                    noise_pred = noise_pred_uncond + self.guidance_scale * (noise_pred_text - noise_pred_uncond)
+                    noise_pred_neg, noise_pred_text = noise_pred.chunk(2)
+                    
+                    noise_pred = uncon_noise_pred + (self.guidance_scale * (noise_pred_text - uncon_noise_pred)  \
+                                - (self.guidance_scale + weight_map) * (noise_pred_neg - uncon_noise_pred))/2
+                    # original_norm = torch.linalg.norm(original_pred, keepdim=True)
+                    # # original_norm = torch.linalg.norm(original_pred, dim=1, keepdim=True)
+                    # new_noise_pred = noise_pred_uncond + self.guidance_scale * (noise_pred_text - weight_map * noise_pred_uncond)
+                    # new_norm = torch.linalg.norm(new_noise_pred, keepdim=True)
+                    # # new_norm = torch.linalg.norm(new_noise_pred, dim=1, keepdim=True)
+                    # noise_pred = new_noise_pred / new_norm * original_norm
+                    
                     should_skip_layers = (
                         True
                         if i > num_inference_steps * skip_layer_guidance_start

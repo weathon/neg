@@ -99,17 +99,17 @@ class JointAttnProcessor2_0:
             ).transpose(1, 2)
             encoder_hidden_states_value_proj = encoder_hidden_states_value_proj.view(
                 batch_size, -1, attn.heads, head_dim
-            ).transpose(1, 2)
+            ).transpose(1, 2) 
 
             if attn.norm_added_q is not None:
                 encoder_hidden_states_query_proj = attn.norm_added_q(encoder_hidden_states_query_proj)
             if attn.norm_added_k is not None:
                 encoder_hidden_states_key_proj = attn.norm_added_k(encoder_hidden_states_key_proj)
 
-            self.attn_weight = torch.torch.einsum("bhkd,bhqd->bhkq", encoder_hidden_states_key_proj[0:1,:,0:2].mean(2).unsqueeze(2), query[0:1])
-            # self.attn_weight = torch.torch.einsum("bhqd,bhkd->bhqk", encoder_hidden_states_query_proj[0:1].mean(2).unsqueeze(2), key[0:1])
+            self.attn_weight = torch.torch.einsum("bhkd,bhqd->bhkq", encoder_hidden_states_key_proj[0:1,:,0:self.neg_prompt_len].mean(2).unsqueeze(2), query[0:1])
+            # self.attn_weight = torch.torch.einsum("bhqd,bhkd->bhqk", encoder_hidden_states_query_proj[0:1,:,:self.neg_prompt_len].mean(2).unsqueeze(2), key[0:1])
             self.attn_weight = self.attn_weight / math.sqrt(head_dim)
-            self.attn_weight = self.attn_weight.softmax(dim=-1)
+            # self.attn_weight = self.attn_weight.softmax(dim=-1)
             
             query = torch.cat([query, encoder_hidden_states_query_proj], dim=2)
             key = torch.cat([key, encoder_hidden_states_key_proj], dim=2)
