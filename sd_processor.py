@@ -106,7 +106,7 @@ class JointAttnProcessor2_0:
             if attn.norm_added_k is not None:
                 encoder_hidden_states_key_proj = attn.norm_added_k(encoder_hidden_states_key_proj)
 
-            self.attn_weight = torch.torch.einsum("bhkd,bhqd->bhkq", encoder_hidden_states_key_proj[0:1,:,0:1].mean(2).unsqueeze(2), query[0:1])
+            self.attn_weight = torch.torch.einsum("bhkd,bhqd->bhkq", encoder_hidden_states_key_proj[0:1,:,0:2].mean(2).unsqueeze(2), query[0:1])
             # self.attn_weight = torch.torch.einsum("bhqd,bhkd->bhqk", encoder_hidden_states_query_proj[0:1].mean(2).unsqueeze(2), key[0:1])
             self.attn_weight = self.attn_weight / math.sqrt(head_dim)
             self.attn_weight = self.attn_weight.softmax(dim=-1)
