@@ -1,5 +1,5 @@
 prompt="A beautiful view over the park, realistic, high quality, 8k, detailed, cinematic lighting, hyper realistic, photo realistic, award winning photography"
-negative_prompt="vegetation, trees, plants, flowers, grass"
+negative_prompt="trees"
 seed=$(shuf -i 1-1000000 -n 1)
 
 CUDA_VISIBLE_DEVICES=0 python3 ours.py \
