@@ -17,7 +17,7 @@ wandb.init(project="sd3-benchmark")
 for prompt in prompts:
     for _ in range(10):
         positive_prompt = prompt["positive_prompt"] + " 4k, high quality, masterpiece, best quality, 8k, realistic, detailed, intricate, beautiful, cinematic lighting"
-        negative_prompt = prompt["negative_prompt"] + " are in the image." 
+        negative_prompt = "there are " + prompt["negative_prompt"] + " are in the image" 
         seed = random.randint(0, 2**32 - 1)
         cmd = [
             "python", "ours.py",
