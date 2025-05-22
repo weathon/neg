@@ -455,7 +455,7 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                 device=device,
             )
 
-            clip_prompt_embeds = torch.nn.functional.pad(
+            clip_prompt_embeds = torch.nn.functional.pad( 
                 clip_prompt_embeds, (0, t5_prompt_embed.shape[-1] - clip_prompt_embeds.shape[-1])
             )
 
@@ -805,6 +805,7 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
         skip_layer_guidance_start: float = 0.01,
         mu: Optional[float] = None,
         avoidance_factor = 0,
+        negative_offset = 0,
     ):
         r"""
         Function invoked when calling the pipeline for generation.
@@ -1091,9 +1092,9 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                 )[0]
                 
                 
-                # print(uncon_noise_pred.shape, noise_pred.shape, uncond_embed.shape, pooled_uncon_embed.shape, latent_model_input.shape)
-                
+                # print(pooled_prompt_embeds.shape, prompt_embeds.shape)
                 self.neg_maps.append(torch.stack([block.attn.processor.attn_weight for block in self.transformer.transformer_blocks]))
+                # negative_scheduler_scale = 1 #-t/1000 + 1
                 weight_map = self.neg_maps[-1].mean((0,1,2,3)).reshape(width//16, height//16) * avoidance_factor
                 weight_map = torch.nn.functional.interpolate(
                     weight_map.unsqueeze(0).unsqueeze(0),
@@ -1101,12 +1102,14 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                     mode="bilinear",
                     align_corners=False,
                 ).squeeze(0).squeeze(0)
-                # if avoidance_factor == 0:
-                #     weight_map = 2
-                    
+                if avoidance_factor == 0:
+                    weight_map = 1
+                
+                
+                
                 uncon_noise_pred = self.transformer(
                     hidden_states=latent_model_input[0:1],
-                    timestep=timestep[0:1],
+                    timestep=timestep[0:1], 
                     encoder_hidden_states=uncond_embed,
                     pooled_projections=pooled_uncon_embed,
                     joint_attention_kwargs=self.joint_attention_kwargs,
@@ -1116,9 +1119,11 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                 # perform guidance
                 if self.do_classifier_free_guidance:
                     noise_pred_neg, noise_pred_text = noise_pred.chunk(2)
+                    # print(t)
                     
+                    # negative_scheduler_scale = (-torch.cos((t*torch.pi)/1000-torch.pi)+1)/2
                     noise_pred = uncon_noise_pred + (self.guidance_scale * (noise_pred_text - uncon_noise_pred)  \
-                                - (self.guidance_scale + weight_map) * (noise_pred_neg - uncon_noise_pred))/2
+                                - (self.guidance_scale * (1 + torch.clip(weight_map, 0, 2))) * (noise_pred_neg - uncon_noise_pred))/2
                     # original_norm = torch.linalg.norm(original_pred, keepdim=True)
                     # # original_norm = torch.linalg.norm(original_pred, dim=1, keepdim=True)
                     # new_noise_pred = noise_pred_uncond + self.guidance_scale * (noise_pred_text - weight_map * noise_pred_uncond)
