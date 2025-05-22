@@ -2,7 +2,7 @@
 import torch
 from sd_pipeline import StableDiffusion3Pipeline
 from sd_processor import JointAttnProcessor2_0
-pipe = StableDiffusion3Pipeline.from_pretrained("stabilityai/stable-diffusion-3.5-medium", torch_dtype=torch.bfloat16)
+pipe = StableDiffusion3Pipeline.from_pretrained("stabilityai/stable-diffusion-3.5-large", torch_dtype=torch.bfloat16)
 pipe = pipe.to("cuda")
 
 # %%
@@ -42,10 +42,10 @@ image = pipe(
     prompt,
     negative_prompt=negative_prompt,
     num_inference_steps=32,
-    avoidance_factor=1.3,
+    avoidance_factor=10,
     guidance_scale=8,
     generator=torch.manual_seed(seed),  
 ).images[0] 
 
 
-image.save("ours.png")  
+image.save("ours.png") 

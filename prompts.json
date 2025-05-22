@@ -1,0 +1,162 @@
+[
+  {
+    "positive_prompt": "A park with green grass, benches, and walking paths under a clear sky",
+    "negative_prompt": "trees"
+  },
+  {
+    "positive_prompt": "A kitchen with a stove, sink, and empty countertops",
+    "negative_prompt": "refrigerator"
+  },
+  {
+    "positive_prompt": "A beach scene with sand, umbrellas, and people sunbathing",
+    "negative_prompt": "ocean"
+  },
+  {
+    "positive_prompt": "A living room with a coffee table, rug, and bookshelves",
+    "negative_prompt": "sofa"
+  },
+  {
+    "positive_prompt": "A school classroom with desks, whiteboard, and posters on walls",
+    "negative_prompt": "students"
+  },
+  {
+    "positive_prompt": "A highway with road signs and overpasses during daytime",
+    "negative_prompt": "cars"
+  },
+  {
+    "positive_prompt": "A mountain scene with rocky cliffs and a cloudy sky",
+    "negative_prompt": "snow"
+  },
+  {
+    "positive_prompt": "A dining area with chairs and plates on the table",
+    "negative_prompt": "food"
+  },
+  {
+    "positive_prompt": "A forest trail with dirt paths and occasional rocks",
+    "negative_prompt": "trees"
+  },
+  {
+    "positive_prompt": "A city street with traffic lights, sidewalks, and street signs",
+    "negative_prompt": "cars"
+  },
+  {
+    "positive_prompt": "A bedroom with a dresser, nightstand, and lamps",
+    "negative_prompt": "bed"
+  },
+  {
+    "positive_prompt": "A train station with ticket booths and schedules displayed",
+    "negative_prompt": "trains"
+  },
+  {
+    "positive_prompt": "An office with desks, chairs, and ceiling lights",
+    "negative_prompt": "computers"
+  },
+  {
+    "positive_prompt": "A lake surrounded by hills, reflecting the cloudy sky",
+    "negative_prompt": "water"
+  },
+  {
+    "positive_prompt": "A playground with swings, slides, and open space",
+    "negative_prompt": "children"
+  },
+  {
+    "positive_prompt": "A bookstore with shelves, checkout counter, and signs",
+    "negative_prompt": "books"
+  },
+  {
+    "positive_prompt": "A zoo area with walkways and enclosures",
+    "negative_prompt": "animals"
+  },
+  {
+    "positive_prompt": "A winter street scene with people walking in coats",
+    "negative_prompt": "snow"
+  },
+  {
+    "positive_prompt": "A farm landscape with barns and open fields",
+    "negative_prompt": "animals"
+  },
+  {
+    "positive_prompt": "A concert stage with lights and empty mic stands",
+    "negative_prompt": "musicians"
+  },
+  {
+    "positive_prompt": "A hospital room with medical equipment and charts on the wall",
+    "negative_prompt": "patients"
+  },
+  {
+    "positive_prompt": "An airport terminal with gates, signage, and waiting areas",
+    "negative_prompt": "airplanes"
+  },
+  {
+    "positive_prompt": "A desert scene with sand dunes and distant rocks",
+    "negative_prompt": "cactus"
+  },
+  {
+    "positive_prompt": "A rainy street with puddles and reflections of streetlights",
+    "negative_prompt": "rain"
+  },
+  {
+    "positive_prompt": "A library interior with rows of empty shelves and reading tables",
+    "negative_prompt": "books"
+  },
+  {
+    "positive_prompt": "A football field with goalposts and yard markers",
+    "negative_prompt": "players"
+  },
+  {
+    "positive_prompt": "A gym with weights, mirrors, and rubber flooring",
+    "negative_prompt": "people"
+  },
+  {
+    "positive_prompt": "A movie theater with rows of seats and a blank screen",
+    "negative_prompt": "audience"
+  },
+  {
+    "positive_prompt": "A bridge stretching across a river with streetlights on it",
+    "negative_prompt": "cars"
+  },
+  {
+    "positive_prompt": "A museum hall with glass display cases and information plaques",
+    "negative_prompt": "artifacts"
+  },
+  {
+    "positive_prompt": "A wedding venue with decorations and empty chairs",
+    "negative_prompt": "people"
+  },
+  {
+    "positive_prompt": "A forest clearing with grass and exposed soil patches",
+    "negative_prompt": "trees"
+  },
+  {
+    "positive_prompt": "A marketplace with vendor stalls and hanging signs",
+    "negative_prompt": "goods"
+  },
+  {
+    "positive_prompt": "A stadium with rows of empty seats and a scoreboard",
+    "negative_prompt": "crowd"
+  },
+  {
+    "positive_prompt": "A suburban neighborhood with driveways and mailboxes",
+    "negative_prompt": "houses"
+  },
+  {
+    "positive_prompt": "A computer lab with empty desks and power outlets",
+    "negative_prompt": "computers"
+  },
+  {
+    "positive_prompt": "A parking lot with painted lines and directional arrows",
+    "negative_prompt": "cars"
+  },
+  {
+    "positive_prompt": "A swimming pool area with chairs and a diving board",
+    "negative_prompt": "water"
+  },
+  {
+    "positive_prompt": "An amusement park with pathways and ticket booths",
+    "negative_prompt": "rides"
+  },
+  {
+    "positive_prompt": "A battlefield scene with trenches and smoke",
+    "negative_prompt": "soldiers"
+  }
+]
