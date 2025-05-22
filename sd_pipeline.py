@@ -1067,7 +1067,7 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                     return_dict=False,
                 )[0]
                 self.neg_maps.append(torch.stack([block.attn.processor.attn_weight for block in self.transformer.transformer_blocks]))
-                
+                # weight_map = self.neg_maps[-1].mean((0,1,2,3)).reshape(width//16, height//16) * 1e4
 
                 # perform guidance
                 if self.do_classifier_free_guidance:
