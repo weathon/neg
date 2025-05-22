@@ -17,7 +17,7 @@ wandb.init(project="sd3-benchmark")
 for prompt in prompts:
     for _ in range(10):
         positive_prompt = prompt["positive_prompt"] + " 4k, high quality, masterpiece, best quality, 8k, realistic, detailed, intricate, beautiful, cinematic lighting"
-        negative_prompt = prompt["negative_prompt"] + " are not in the image."
+        negative_prompt = prompt["negative_prompt"] + " are in the image." 
         seed = random.randint(0, 2**32 - 1)
         cmd = [
             "python", "ours.py",
@@ -27,7 +27,7 @@ for prompt in prompts:
         ]
         subprocess.run(cmd)
         ours_pos_score = torch.sigmoid(eval.get_score(Image.open("ours.png"), positive_prompt)[0][1]).item()
-        ours_neg_score = torch.sigmoid(eval.get_score(Image.open("ours.png"), negative_prompt)[0][0]).item()
+        ours_neg_score = torch.sigmoid(eval.get_score(Image.open("ours.png"), negative_prompt)[0][1]).item()
         ours_score = ours_pos_score - ours_neg_score
         
         cmd = [
@@ -38,7 +38,7 @@ for prompt in prompts:
         ]
         subprocess.run(cmd)
         vanilla_pos_score = torch.sigmoid(eval.get_score(Image.open("vanilla.png"), positive_prompt)[0][1]).item()
-        vanilla_neg_score = torch.sigmoid(eval.get_score(Image.open("vanilla.png"), negative_prompt)[0][0]).item()
+        vanilla_neg_score = torch.sigmoid(eval.get_score(Image.open("vanilla.png"), negative_prompt)[0][1]).item()
         vanilla_score = vanilla_pos_score - vanilla_neg_score
         
         img = Image.fromarray(
