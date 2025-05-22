@@ -1101,7 +1101,9 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                     mode="bilinear",
                     align_corners=False,
                 ).squeeze(0).squeeze(0)
-
+                # if avoidance_factor == 0:
+                #     weight_map = 2
+                    
                 uncon_noise_pred = self.transformer(
                     hidden_states=latent_model_input[0:1],
                     timestep=timestep[0:1],
