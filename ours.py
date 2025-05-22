@@ -35,14 +35,14 @@ for block in pipe.transformer.transformer_blocks:
 # %%
 import time
 import numpy as np
-from PIL import Image
+from PIL import Image 
 # seed = 1747891046#int(time.time())
 
 image = pipe(
     prompt,
     negative_prompt=negative_prompt,
     num_inference_steps=32,
-    avoidance_factor=2,
+    avoidance_factor=0.2,
     guidance_scale=8,
     generator=torch.manual_seed(1747891046),  
 ).images[0] 
