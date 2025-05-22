@@ -41,10 +41,10 @@ from PIL import Image
 image = pipe(
     prompt,
     negative_prompt=negative_prompt,
-    num_inference_steps=16,
-    avoidance_factor=4,
+    num_inference_steps=32,
+    avoidance_factor=2,
     guidance_scale=8,
-    generator=torch.manual_seed(seed),  
+    generator=torch.manual_seed(1747891046),  
 ).images[0] 
 
 
