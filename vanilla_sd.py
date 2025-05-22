@@ -11,7 +11,7 @@ prompt = args.prompt
 negative_prompt = args.negative_prompt
 seed = args.seed
 
-pipe = StableDiffusion3Pipeline.from_pretrained("stabilityai/stable-diffusion-3.5-large", torch_dtype=torch.bfloat16)
+pipe = StableDiffusion3Pipeline.from_pretrained("stabilityai/stable-diffusion-3.5-medium", torch_dtype=torch.bfloat16)
 pipe = pipe.to("cuda")
 
 # %%
