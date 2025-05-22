@@ -14,7 +14,7 @@
 
 import inspect
 from typing import Any, Callable, Dict, List, Optional, Union
-
+import torchvision
 import torch
 from transformers import (
     CLIPTextModelWithProjection,
@@ -1114,16 +1114,17 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                     pooled_projections=pooled_uncon_embed,
                     joint_attention_kwargs=self.joint_attention_kwargs,
                     return_dict=False,
-                )[0]
+                )[0] 
                 
                 # perform guidance
                 if self.do_classifier_free_guidance:
                     noise_pred_neg, noise_pred_text = noise_pred.chunk(2)
                     # print(t)
-                    
+                    # if type(weight_map) != int:
+                    #     weight_map = torchvision.transforms.functional.gaussian_blur(weight_map.unsqueeze(0), kernel_size=(31, 31)).squeeze(0)
                     # negative_scheduler_scale = (-torch.cos((t*torch.pi)/1000-torch.pi)+1)/2
                     noise_pred = uncon_noise_pred + (self.guidance_scale * (noise_pred_text - uncon_noise_pred)  \
-                                - (self.guidance_scale * (1 + torch.clip(weight_map, 0, 2))) * (noise_pred_neg - uncon_noise_pred))/2
+                                - (self.guidance_scale + weight_map) * (noise_pred_neg - uncon_noise_pred))/2
                     # original_norm = torch.linalg.norm(original_pred, keepdim=True)
                     # # original_norm = torch.linalg.norm(original_pred, dim=1, keepdim=True)
                     # new_noise_pred = noise_pred_uncond + self.guidance_scale * (noise_pred_text - weight_map * noise_pred_uncond)
