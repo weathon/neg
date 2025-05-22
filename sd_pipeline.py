@@ -1095,7 +1095,7 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                 # print(pooled_prompt_embeds.shape, prompt_embeds.shape)
                 self.neg_maps.append(torch.stack([block.attn.processor.attn_weight for block in self.transformer.transformer_blocks]))
                 # negative_scheduler_scale = 1 #-t/1000 + 1
-                weight_map = self.neg_maps[-1].mean((0,1,2,3)).reshape(width//16, height//16) * avoidance_factor
+                weight_map = self.neg_maps[-1].mean((0,1,2)).max(0).values.reshape(width//16, height//16) * avoidance_factor
                 weight_map = torch.nn.functional.interpolate(
                     weight_map.unsqueeze(0).unsqueeze(0),
                     size=(height // 8, width // 8),
