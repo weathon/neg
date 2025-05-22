@@ -1123,14 +1123,11 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                     # if type(weight_map) != int:
                     #     weight_map = torchvision.transforms.functional.gaussian_blur(weight_map.unsqueeze(0), kernel_size=(31, 31)).squeeze(0)
                     # negative_scheduler_scale = (-torch.cos((t*torch.pi)/1000-torch.pi)+1)/2
-                    noise_pred = uncon_noise_pred + (self.guidance_scale * (noise_pred_text - uncon_noise_pred)  \
-                                - (self.guidance_scale + weight_map) * (noise_pred_neg - uncon_noise_pred))/2
-                    # original_norm = torch.linalg.norm(original_pred, keepdim=True)
-                    # # original_norm = torch.linalg.norm(original_pred, dim=1, keepdim=True)
-                    # new_noise_pred = noise_pred_uncond + self.guidance_scale * (noise_pred_text - weight_map * noise_pred_uncond)
-                    # new_norm = torch.linalg.norm(new_noise_pred, keepdim=True)
-                    # # new_norm = torch.linalg.norm(new_noise_pred, dim=1, keepdim=True)
-                    # noise_pred = new_noise_pred / new_norm * original_norm
+                    noise_pred = uncon_noise_pred + (self.guidance_scale * (noise_pred_text - uncon_noise_pred))
+                    neg_noise_pred = - (self.guidance_scale + weight_map) * (noise_pred_neg - uncon_noise_pred)
+                    original_norm = torch.linalg.norm(noise_pred, dim=1, keepdim=True)
+                    neg_norm = torch.linalg.norm(neg_noise_pred, dim=1, keepdim=True)
+                    noise_pred = (neg_noise_pred + noise_pred) / (2 * neg_norm) * original_norm
                     
                     should_skip_layers = (
                         True
