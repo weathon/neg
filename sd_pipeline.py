@@ -1100,8 +1100,8 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                 weight_map = torch.nn.functional.interpolate(
                     weight_map.unsqueeze(0).unsqueeze(0),
                     size=(height // 8, width // 8),
-                    mode="bilinear",
-                    align_corners=False,
+                    mode="bicubic",
+                    align_corners=True, 
                 ).squeeze(0).squeeze(0)
 
                 uncon_noise_pred = self.transformer(
@@ -1125,7 +1125,8 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                     # - (self.guidance_scale + weight_map + negative_offset) * (noise_pred_neg - uncon_noise_pred))/2
                     original_pred = self.guidance_scale * (noise_pred_text - uncon_noise_pred)
                     original_norm = torch.linalg.norm(original_pred, keepdim=True)
-                    new_noise_pred = original_pred - self.guidance_scale * weight_map * (noise_pred_neg - uncon_noise_pred)
+                    new_noise_pred = original_pred - (self.guidance_scale + weight_map - negative_offset) * (noise_pred_neg - uncon_noise_pred)
+                    # new_noise_pred = original_pred - self.guidance_scale * weight_map * (noise_pred_neg - uncon_noise_pred)
                     new_norm = torch.linalg.norm(new_noise_pred, keepdim=True) 
                     noise_pred = uncon_noise_pred + new_noise_pred  / new_norm * original_norm
                     

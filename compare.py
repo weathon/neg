@@ -33,7 +33,7 @@ af=5.625615976406609; ws=0.5673401323526025; no=-7.67718443431245; gc=7.64107663
 
 image = pipe(
     prompt=prompts[0],
-    negative_prompt=negative_prompt,
+    negative_prompt=negative_prompt, 
     num_inference_steps=32,
     avoidance_factor=af,
     weight_scale=ws,
