@@ -42,9 +42,10 @@ image = pipe(
     prompt,
     negative_prompt=negative_prompt,
     num_inference_steps=32,
-    avoidance_factor=0.9,
-    guidance_scale=5,
-    # generator=torch.manual_seed(1747891046),  
+    avoidance_factor=0.5,
+    guidance_scale=6,
+    negative_offset=-1.5,
+    generator=torch.manual_seed(seed),  
 ).images[0] 
 
 
