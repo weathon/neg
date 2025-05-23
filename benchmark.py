@@ -69,9 +69,9 @@ for _ in range(10):
             "--seed", str(seed)
         ]
         subprocess.run(cmd)
-        ours_pos_score = gpt_rating(Image.open("ours.png"), positive_prompt)
-        ours_neg_score = gpt_rating(Image.open("ours.png"), negative_prompt)
-        ours_score = ours_pos_score - ours_neg_score
+        # ours_pos_score = gpt_rating(Image.open("ours.png"), positive_prompt)
+        # ours_neg_score = gpt_rating(Image.open("ours.png"), negative_prompt)
+        # ours_score = ours_pos_score - ours_neg_score
         
         cmd = [
             "python", "vanilla_sd.py",
@@ -80,9 +80,9 @@ for _ in range(10):
             "--seed", str(seed)
         ]
         subprocess.run(cmd)
-        vanilla_pos_score = gpt_rating(Image.open("vanilla.png"), positive_prompt)
-        vanilla_neg_score = gpt_rating(Image.open("vanilla.png"), negative_prompt)
-        vanilla_score = vanilla_pos_score - vanilla_neg_score
+        # vanilla_pos_score = gpt_rating(Image.open("vanilla.png"), positive_prompt)
+        # vanilla_neg_score = gpt_rating(Image.open("vanilla.png"), negative_prompt)
+        # vanilla_score = vanilla_pos_score - vanilla_neg_score
         
         img = Image.fromarray(
             np.concatenate(
@@ -90,12 +90,6 @@ for _ in range(10):
             )
         )
         wandb.log({
-            "image": wandb.Image(img, caption=f"Negative Prompt: {negative_prompt}"),
-            "ours_score": ours_score,
-            "vanilla_score": vanilla_score,
-            "ours_pos_score": ours_pos_score,
-            "ours_neg_score": ours_neg_score,
-            "vanilla_pos_score": vanilla_pos_score,
-            "vanilla_neg_score": vanilla_neg_score
+            "image": wandb.Image(img, caption=f"Negative Prompt: {negative_prompt}")
         })
         
