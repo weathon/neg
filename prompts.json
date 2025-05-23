@@ -1,66 +1,42 @@
 [
   {
-    "positive_prompt": "A concert stage with lights and empty mic stands",
-    "negative_prompt": "musicians"
-  },
-  {
-    "positive_prompt": "A hospital room with medical equipment and charts on the wall",
-    "negative_prompt": "patients"
-  },
-  {
-    "positive_prompt": "An airport terminal with gates, signage, and waiting areas",
-    "negative_prompt": "airplanes"
-  },
-  {
-    "positive_prompt": "A desert scene with sand dunes and distant rocks",
-    "negative_prompt": "cactus"
-  },
-  {
-    "positive_prompt": "A park with green grass, benches, and walking paths under a clear sky",
+    "positive_prompt": "A beautiful landscape with mountains and a river",
     "negative_prompt": "trees"
   },
   {
-    "positive_prompt": "A beach scene with sand, umbrellas, and people sunbathing",
-    "negative_prompt": "ocean"
-  },
-  {
-    "positive_prompt": "A living room with a coffee table, rug, and bookshelves",
+    "positive_prompt": "A cozy living room with a fireplace",
     "negative_prompt": "sofa"
   },
   {
-    "positive_prompt": "A school classroom with desks, whiteboard, and posters on walls",
-    "negative_prompt": "students"
+    "positive_prompt": "A beautiful landscape with mountains and a river",
+    "negative_prompt": "waterbody"
   },
   {
-    "positive_prompt": "A highway with road signs and overpasses during daytime",
-    "negative_prompt": "cars"
+    "positive_prompt": "A beautiful man sitting on a bench in a park",
+    "negative_prompt": "hair"
   },
   {
-    "positive_prompt": "A very high mountain scene with rocky cliffs and a cloudy sky",
-    "negative_prompt": "snow"
+    "positive_prompt": "A vibrant coral reef underwater aquarium",
+    "negative_prompt": "fish"
   },
   {
-    "positive_prompt": "A dining area with chairs and plates on the table",
-    "negative_prompt": "food"
+    "positive_prompt": "A serene mountain landscape",
+    "negative_prompt": "clouds"
   },
   {
-    "positive_prompt": "A city street with traffic lights, sidewalks, and street signs",
-    "negative_prompt": "cars"
+    "positive_prompt": "A delicious plate of gourmet food",
+    "negative_prompt": "utensils"
   },
   {
-    "positive_prompt": "A train station with ticket booths and schedules displayed",
-    "negative_prompt": "trains"
+    "positive_prompt": "A tranquil beach with people relaxing",
+    "negative_prompt": "ocean"
   },
   {
-    "positive_prompt": "An office with desks, chairs, and ceiling lights",
-    "negative_prompt": "computers"
+    "positive_prompt": "A colorful garden filled with flowers",
+    "negative_prompt": "fence"
   },
   {
-    "positive_prompt": "A playground with swings, slides, and open space",
-    "negative_prompt": "children"
-  },
-  {
-    "positive_prompt": "A bookstore with shelves, checkout counter, and signs",
-    "negative_prompt": "books"
+    "positive_prompt": "A delicious plate of fruits",
+    "negative_prompt": "orange fruit"
   }
 ]

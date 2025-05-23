@@ -22,9 +22,6 @@ prompt = args.prompt
 negative_prompt = args.negative_prompt
 seed = args.seed
 
-len(pipe.tokenizer_3.tokenize(negative_prompt)), len(pipe.tokenizer_3.tokenize(negative_prompt)), len(pipe.tokenizer_3.tokenize(negative_prompt))
-
-# %%
 for block in pipe.transformer.transformer_blocks:
     block.attn.processor.neg_prompt_len=max([
         len(pipe.tokenizer.tokenize(negative_prompt)), 
@@ -32,19 +29,14 @@ for block in pipe.transformer.transformer_blocks:
         len(pipe.tokenizer_3.tokenize(negative_prompt))
     ]) + 1 
 
-# %%
-import time
-import numpy as np
-from PIL import Image 
-# seed = 1747891046#int(time.time())
 
 image = pipe(
     prompt,
     negative_prompt=negative_prompt,
     num_inference_steps=32,
-    avoidance_factor=0.5,
+    avoidance_factor=0.7,
     guidance_scale=6,
-    negative_offset=-1.5,
+    negative_offset=-1,
     generator=torch.manual_seed(seed),  
 ).images[0] 
 
