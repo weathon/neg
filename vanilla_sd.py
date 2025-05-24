@@ -18,8 +18,8 @@ pipe = pipe.to("cuda")
 image = pipe(
     prompt,
     negative_prompt=negative_prompt,
-    num_inference_steps=32,
-    guidance_scale=5,
+    num_inference_steps=40,
+    guidance_scale=7.5,
     generator=torch.manual_seed(seed),
 ).images[0]
 image.save("vanilla.png")

@@ -33,10 +33,10 @@ for block in pipe.transformer.transformer_blocks:
 image = pipe(
     prompt,
     negative_prompt=negative_prompt,
-    num_inference_steps=32,
-    avoidance_factor=1,
-    guidance_scale=6,
-    negative_offset=-1,
+    num_inference_steps=40,
+    avoidance_factor=3,
+    guidance_scale=7.5,
+    negative_offset=-1.6,
     generator=torch.manual_seed(seed),  
 ).images[0] 
 

@@ -34,7 +34,7 @@ def compare(image1, image2, pos_prompt, neg_prompt):
     base64_2 = f"data:image/png;base64,{base64_2}"
     
     completion = client.beta.chat.completions.parse(
-        model="gpt-4.1-mini",
+        model="gpt-4.1",
         messages=[{
             "role": "user",
             "content": [
@@ -57,6 +57,7 @@ def compare(image1, image2, pos_prompt, neg_prompt):
     )
 
     data = completion.choices[0].message.parsed
+    print(data.reasoning)
     return data
 
 
@@ -108,10 +109,10 @@ for _ in range(10):
         image = pipe(
             positive_prompt,
             negative_prompt=negative_prompt,
-            num_inference_steps=32,
-            avoidance_factor=0.7,
-            guidance_scale=6,
-            negative_offset=-1,
+            num_inference_steps=40,
+            avoidance_factor=2.5,
+            guidance_scale=7.5,
+            negative_offset=-1.8,
             generator=torch.manual_seed(seed),  
         ).images[0] 
         image.save("ours.png") 
@@ -119,8 +120,8 @@ for _ in range(10):
         image = pipe_vanilla(
             positive_prompt,
             negative_prompt=negative_prompt,
-            num_inference_steps=32,
-            guidance_scale=5,
+            num_inference_steps=40,
+            guidance_scale=7.5,
             generator=torch.manual_seed(seed),
         ).images[0]
         image.save("vanilla.png")
@@ -156,8 +157,8 @@ for _ in range(10):
         )
         wandb.log({
             "image": wandb.Image(img, caption=f"Negative Prompt: {negative_prompt}"),
-            "win_rate_positive": win_positive / total_positive,
-            "win_rate_negative": win_negative / total_negative,
-            "win_rate_quality": win_quality / total_quality,
+            "win_rate_positive": win_positive / (total_positive + 0.1),
+            "win_rate_negative": win_negative / (total_negative + 0.1),
+            "win_rate_quality": win_quality / (total_quality + 0.1),
         })
         
