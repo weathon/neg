@@ -1126,11 +1126,11 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                     original_pred = self.guidance_scale * (noise_pred_text - uncon_noise_pred)
                     # if t < 950:
                     original_norm = torch.linalg.norm(original_pred, keepdim=True)
-                    weight_map = (weight_map - weight_map.mean()) * avoidance_factor
-                    weight_map = torch.clip(weight_map, 0, 30)
+                    weight_map = (weight_map) * avoidance_factor + negative_offset # only activate when it pass a threashold
+                    weight_map = torch.clip(weight_map, 0, 4)
                     self.weight_maps.append(weight_map)
                     weight_map = weight_map.unsqueeze(0).unsqueeze(0)
-                    new_noise_pred = (original_pred - (self.guidance_scale + weight_map - negative_offset) * (noise_pred_neg - uncon_noise_pred))/2
+                    new_noise_pred = (original_pred - (self.guidance_scale + weight_map) * (noise_pred_neg - uncon_noise_pred))/2
                     # new_noise_pred = original_pred - self.guidance_scale * weight_map * (noise_pred_neg - uncon_noise_pred)
                     new_norm = torch.linalg.norm(new_noise_pred, keepdim=True) 
                     noise_pred = uncon_noise_pred + new_noise_pred  / new_norm * original_norm
