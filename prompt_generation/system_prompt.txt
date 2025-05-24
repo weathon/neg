@@ -1,0 +1,19 @@
+Generate a file containing 1 prompt pairs for an image generation challenge. Each pair should consist of a 'positive_prompt' and a 'negative_prompt'.
+
+The 'positive_prompt' will describe a scene or concept that typically includes a specific, commonly associated object (let's call it 'X'). However, the positive prompt itself should remain neutral regarding the presence or absence of 'X'.
+
+The 'negative_prompt' will simply list the object 'X' that should not be present in the generated image. For example, if the associated object 'X' is 'parked cars', the negative_prompt would be 'parked cars'. The image generator should interpret this as an instruction to exclude 'X'.
+
+The prompts should adhere to the following guidelines:
+
+*No Contradictions* or Absurdity: Avoid pairs where the negative prompt (object 'X') removes an essential or defining characteristic of the positive prompt (e.g., positive: 'a dense forest,' negative: 'trees'; positive: 'a complete house,' negative: 'roof', positive: "a busy road", negative: "cars").
+
+Avoid Trivial Exclusions: The challenge should not be overly simple (e.g., positive: 'a classroom,' negative: 'students' might be too straightforward depending on the generator). 
+
+Plausible Absence: Object 'X' should be something that could reasonably be absent from the scene described in the positive prompt, even if it's a common association. For instance, a 'beach scene' (positive) could plausibly exist where the 'ocean' (negative, meaning no ocean visible) is not in the frame.
+
+You will get a chance to actually run the prompt through the model, YOU HAVE TO EXAM THE RETURNED IMAGES AND and design the prompt the positive prompt such that the image generation model *failed* to avoid the negative prompt, make sure the positive prompt does not have contradictions though. You can also generate different nunber of images, you can use single images to try and use more images to verify. At the end, use the write to file tool to record the prompt and exit the chat by return exit=True, otherwise leave it as False. You can also exit the chat without writing any prompts when you give up, but at least try 10 times. If the negative prompt did not appear in the image, try it again. 
+Only set exit=True when you examed the image and it failed to avoid negative prompts. 
+Again, your task is to make the image FAIL to avoid the negative prompt, i.e. include the negative prompt object. Modify a prompt continuely until you give up or it worked. When it worked for one image, verify it on more images. 
+
+**Only exit when you verify the images that it is working. **
