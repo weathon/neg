@@ -14,7 +14,6 @@ from pydantic import BaseModel
 client = OpenAI()
 
 class Score(BaseModel):
-    reasoning: str
     id_better_positive: int
     id_better_negative: int
     id_better_quality: int
@@ -55,9 +54,7 @@ def compare(image1, image2, pos_prompt, neg_prompt):
         }],
         response_format=Score
     )
-
     data = completion.choices[0].message.parsed
-    print(data.reasoning)
     return data
 
 
@@ -110,8 +107,8 @@ for _ in range(10):
             positive_prompt,
             negative_prompt=negative_prompt,
             num_inference_steps=40,
-            avoidance_factor=2.5,
-            guidance_scale=7.5,
+            avoidance_factor=1.2,
+            guidance_scale=6,
             negative_offset=-1.8,
             generator=torch.manual_seed(seed),  
         ).images[0] 
