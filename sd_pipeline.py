@@ -1098,7 +1098,7 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                 # print(uncon_noise_pred.shape, noise_pred.shape, uncond_embed.shape, pooled_uncon_embed.shape, latent_model_input.shape)
                 
                 self.neg_maps.append(torch.stack([block.attn.processor.attn_weight for block in self.transformer.transformer_blocks]))
-                weight_map = self.neg_maps[-1].mean((0,1,2,3)).reshape(width//16, height//16) * avoidance_factor
+                weight_map = torch.clip(self.neg_maps[-1].mean((0,1,2,3)).reshape(width//16, height//16), 0, 2) * avoidance_factor
                 weight_map = torch.nn.functional.interpolate(
                     weight_map.unsqueeze(0).unsqueeze(0),
                     size=(height // 8, width // 8),
