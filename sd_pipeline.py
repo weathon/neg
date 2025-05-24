@@ -1127,7 +1127,7 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                     # if t < 950:
                     original_norm = torch.linalg.norm(original_pred, keepdim=True)
                     # weight_map = weight_map - weight_map.mean() why when minus mean not working
-                    weight_map = torch.clip(weight_map, 0, 5)
+                    # weight_map = torch.clip(weight_map, 0, 5)
                     self.weight_maps.append(weight_map)
                     weight_map = weight_map.unsqueeze(0).unsqueeze(0)
                     new_noise_pred = (original_pred - (self.guidance_scale + weight_map - negative_offset) * (noise_pred_neg - uncon_noise_pred))/2
