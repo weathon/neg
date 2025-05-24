@@ -88,7 +88,7 @@ total_quality = 0
 for _ in range(10):
     for prompt in prompts:
         positive_prompt = prompt["positive_prompt"] + " 4k, high quality, masterpiece, best quality, 8k, realistic, beautiful"
-        negative_prompt = "there are " + prompt["negative_prompt"] + " in the image"
+        negative_prompt = "there are " + prompt["negative_prompt"]
         
         print(f"Positive Prompt: {positive_prompt}")
         print(f"Negative Prompt: {negative_prompt}")
@@ -106,46 +106,24 @@ for _ in range(10):
         image = pipe(
             positive_prompt,
             negative_prompt=negative_prompt,
-            num_inference_steps=40,
-            avoidance_factor=1.2,
-            guidance_scale=6,
-            negative_offset=-1.8,
+            num_inference_steps=16,
+            avoidance_factor=7,
+            guidance_scale=7, 
+            negative_offset=-12,
             generator=torch.manual_seed(seed),  
         ).images[0] 
         image.save("ours.png") 
         
-        image = pipe_vanilla(
+        image = pipe(
             positive_prompt,
             negative_prompt=negative_prompt,
-            num_inference_steps=40,
-            guidance_scale=7.5,
+            num_inference_steps=16,
+            avoidance_factor=0,
+            guidance_scale=7, 
+            negative_offset=7,
             generator=torch.manual_seed(seed),
         ).images[0]
         image.save("vanilla.png")
-        
-        compared = compare(
-            Image.open("ours.png"),
-            Image.open("vanilla.png"),
-            positive_prompt,
-            negative_prompt
-        )
-        
-        if compared.id_better_positive == 0:
-            win_positive += 1
-        if compared.id_better_positive != -1:
-            total_positive += 1
-        
-        if compared.id_better_negative == 0:
-            win_negative += 1
-        if compared.id_better_negative != -1:
-            total_negative += 1
-            
-        if compared.id_better_quality == 0:
-            win_quality += 1
-        if compared.id_better_quality != -1:
-            total_quality += 1            
-        
-
         
         img = Image.fromarray(
             np.concatenate(
@@ -153,9 +131,6 @@ for _ in range(10):
             )
         )
         wandb.log({
-            "image": wandb.Image(img, caption=f"Negative Prompt: {negative_prompt}"),
-            "win_rate_positive": win_positive / (total_positive + 0.1),
-            "win_rate_negative": win_negative / (total_negative + 0.1),
-            "win_rate_quality": win_quality / (total_quality + 0.1),
+            "image": wandb.Image(img, caption=f"Negative Prompt: {negative_prompt}")
         })
         

@@ -1,38 +1,6 @@
-x
+[
   {
-    "positive_prompt": "A beautiful landscape with mountains and a river",
+    "positive_prompt": "A beautiful landscape over a mountain range",
     "negative_prompt": "trees"
-  },
-  {
-    "positive_prompt": "A beautiful landscape with mountains and a river",
-    "negative_prompt": "waterbody"
-  },
-  {
-    "positive_prompt": "A beautiful man sitting on a bench in a park",
-    "negative_prompt": "hair"
-  },
-  {
-    "positive_prompt": "A vibrant coral reef underwater aquarium",
-    "negative_prompt": "fish"
-  },
-  {
-    "positive_prompt": "A serene mountain landscape",
-    "negative_prompt": "clouds"
-  },
-  {
-    "positive_prompt": "A delicious plate of gourmet food",
-    "negative_prompt": "utensils"
-  },
-  {
-    "positive_prompt": "A tranquil beach with people relaxing",
-    "negative_prompt": "ocean"
-  },
-  {
-    "positive_prompt": "A colorful garden filled with flowers",
-    "negative_prompt": "fence"
-  },
-  {
-    "positive_prompt": "A delicious plate of fruits",
-    "negative_prompt": "orange fruit"
-  }
+}
 ]
