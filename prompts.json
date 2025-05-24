@@ -1,8 +1,4 @@
-[
-  {
-    "positive_prompt": "A cozy living room with a fireplace",
-    "negative_prompt": "sofa"
-  },
+x
   {
     "positive_prompt": "A beautiful landscape with mountains and a river",
     "negative_prompt": "trees"
