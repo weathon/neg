@@ -34,7 +34,7 @@ image = pipe(
     prompt,
     negative_prompt=negative_prompt,
     num_inference_steps=32,
-    avoidance_factor=0.7,
+    avoidance_factor=1,
     guidance_scale=6,
     negative_offset=-1,
     generator=torch.manual_seed(seed),  

@@ -807,6 +807,7 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
         avoidance_factor = 0,
         negative_offset = 0,
         weight_scale = 1.0,
+        return_steps = 0
     ):
         r"""
         Function invoked when calling the pipeline for generation.
@@ -1073,8 +1074,9 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
 
         # 7. Denoising loop
         self.neg_maps = []
+        intermediate_images = []
         with self.progress_bar(total=num_inference_steps) as progress_bar:
-            for i, t in enumerate(timesteps):
+            for i, t in enumerate(timesteps):                    
                 if self.interrupt:
                     continue
 
@@ -1113,9 +1115,6 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                     return_dict=False,
                 )[0]
                 
-                if avoidance_factor == 0:
-                    weight_map = 1
-                
                 # perform guidance
                 if self.do_classifier_free_guidance:
                     noise_pred_neg, noise_pred_text = noise_pred.chunk(2)
@@ -1125,7 +1124,7 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                     # - (self.guidance_scale + weight_map + negative_offset) * (noise_pred_neg - uncon_noise_pred))/2
                     original_pred = self.guidance_scale * (noise_pred_text - uncon_noise_pred)
                     original_norm = torch.linalg.norm(original_pred, keepdim=True)
-                    new_noise_pred = original_pred - (self.guidance_scale + weight_map - negative_offset) * (noise_pred_neg - uncon_noise_pred)
+                    new_noise_pred = (original_pred - (self.guidance_scale + weight_map - negative_offset) * (noise_pred_neg - uncon_noise_pred))/2
                     # new_noise_pred = original_pred - self.guidance_scale * weight_map * (noise_pred_neg - uncon_noise_pred)
                     new_norm = torch.linalg.norm(new_noise_pred, keepdim=True) 
                     noise_pred = uncon_noise_pred + new_noise_pred  / new_norm * original_norm
@@ -1181,7 +1180,9 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
 
                 if XLA_AVAILABLE:
                     xm.mark_step()
-
+                if return_steps > 0 and i % return_steps == 0:
+                    intermediate_images.append(self.image_processor.postprocess(self.vae.decode(latents, return_dict=False)[0], output_type="pil")[0])
+                    
         if output_type == "latent":
             image = latents
 
@@ -1194,6 +1195,10 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
         # Offload all models
         self.maybe_free_model_hooks()
 
+
+        if return_steps > 0:
+            image = intermediate_images + image
+            
         if not return_dict:
             return (image,)
 
