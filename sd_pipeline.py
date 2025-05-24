@@ -1100,7 +1100,7 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                 # print(uncon_noise_pred.shape, noise_pred.shape, uncond_embed.shape, pooled_uncon_embed.shape, latent_model_input.shape)
                 
                 self.neg_maps.append(torch.stack([block.attn.processor.attn_weight for block in self.transformer.transformer_blocks]))
-                weight_map = self.neg_maps[-1].mean((0,1,2,3)).reshape(width//16, height//16) * avoidance_factor
+                weight_map = self.neg_maps[-1].mean((0,1,2,3)).reshape(width//16, height//16)
                 weight_map = torch.nn.functional.interpolate(
                     weight_map.unsqueeze(0).unsqueeze(0),
                     size=(height // 8, width // 8),
@@ -1126,8 +1126,8 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                     original_pred = self.guidance_scale * (noise_pred_text - uncon_noise_pred)
                     # if t < 950:
                     original_norm = torch.linalg.norm(original_pred, keepdim=True)
-                    # weight_map = weight_map - weight_map.mean() why when minus mean not working
-                    # weight_map = torch.clip(weight_map, 0, 5)
+                    weight_map = (weight_map - weight_map.mean()) * avoidance_factor
+                    weight_map = torch.clip(weight_map, 0, 30)
                     self.weight_maps.append(weight_map)
                     weight_map = weight_map.unsqueeze(0).unsqueeze(0)
                     new_noise_pred = (original_pred - (self.guidance_scale + weight_map - negative_offset) * (noise_pred_neg - uncon_noise_pred))/2
