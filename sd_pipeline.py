@@ -1075,6 +1075,8 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
         # 7. Denoising loop
         self.neg_maps = []
         intermediate_images = []
+        self.weight_maps = []
+        
         with self.progress_bar(total=num_inference_steps) as progress_bar:
             for i, t in enumerate(timesteps):                    
                 if self.interrupt:
@@ -1098,11 +1100,11 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                 # print(uncon_noise_pred.shape, noise_pred.shape, uncond_embed.shape, pooled_uncon_embed.shape, latent_model_input.shape)
                 
                 self.neg_maps.append(torch.stack([block.attn.processor.attn_weight for block in self.transformer.transformer_blocks]))
-                weight_map = torch.clip(self.neg_maps[-1].mean((0,1,2,3)).reshape(width//16, height//16), 0, 2) * avoidance_factor
+                weight_map = self.neg_maps[-1].mean((0,1,2,3)).reshape(width//16, height//16) * avoidance_factor
                 weight_map = torch.nn.functional.interpolate(
                     weight_map.unsqueeze(0).unsqueeze(0),
                     size=(height // 8, width // 8),
-                    mode="bicubic",
+                    mode="bicubic", 
                     align_corners=True, 
                 ).squeeze(0).squeeze(0)
 
@@ -1114,7 +1116,6 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                     joint_attention_kwargs=self.joint_attention_kwargs,
                     return_dict=False,
                 )[0]
-                
                 # perform guidance
                 if self.do_classifier_free_guidance:
                     noise_pred_neg, noise_pred_text = noise_pred.chunk(2)
@@ -1123,12 +1124,20 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                     # noise_pred = uncon_noise_pred + (self.guidance_scale * (noise_pred_text - uncon_noise_pred)  \
                     # - (self.guidance_scale + weight_map + negative_offset) * (noise_pred_neg - uncon_noise_pred))/2
                     original_pred = self.guidance_scale * (noise_pred_text - uncon_noise_pred)
+                    # if t < 950:
                     original_norm = torch.linalg.norm(original_pred, keepdim=True)
+                    # weight_map = weight_map - weight_map.mean() why when minus mean not working
+                    weight_map = torch.clip(weight_map, 0, 5)
+                    self.weight_maps.append(weight_map)
+                    weight_map = weight_map.unsqueeze(0).unsqueeze(0)
                     new_noise_pred = (original_pred - (self.guidance_scale + weight_map - negative_offset) * (noise_pred_neg - uncon_noise_pred))/2
                     # new_noise_pred = original_pred - self.guidance_scale * weight_map * (noise_pred_neg - uncon_noise_pred)
                     new_norm = torch.linalg.norm(new_noise_pred, keepdim=True) 
                     noise_pred = uncon_noise_pred + new_noise_pred  / new_norm * original_norm
-                    
+                    # else:
+                    #     noise_pred = original_pred + uncon_noise_pred
+                        
+                        
                     should_skip_layers = (
                         True
                         if i > num_inference_steps * skip_layer_guidance_start
