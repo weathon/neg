@@ -1143,10 +1143,10 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                             new_norm = torch.linalg.norm(new_noise_pred, dim=1, keepdim=True) 
                             noise_pred = uncon_noise_pred + new_noise_pred / new_norm * original_norm
                             weight_map[weight_map==0] = torch.nan
-                            self.negative_guidance_scales.append(weight_map.nanmean().item())
                         else:
                             noise_pred = original_pred + uncon_noise_pred
                             
+                    self.negative_guidance_scales.append(weight_map.nanmean().item())
                 
                     should_skip_layers = (
                         True
