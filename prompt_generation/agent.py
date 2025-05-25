@@ -16,10 +16,11 @@ dotenv.load_dotenv()
 
 from openai import OpenAI
 
-client = OpenAI(
-    api_key=os.getenv("GEMINI_API_KEY"),
-    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
-)
+# client = OpenAI(
+#     api_key=os.getenv("GEMINI_API_KEY"),
+#     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+# )
+client = OpenAI()
 
 pipe = StableDiffusion3PipelineVanilla.from_pretrained("stabilityai/stable-diffusion-3.5-medium", torch_dtype=torch.bfloat16)
 pipe = pipe.to("cuda")
@@ -30,15 +31,17 @@ class Output(BaseModel):
     positive_prompt: str
     negative_prompt: str
     num_of_images: int
-    exit: bool
+    exit: bool = False
+    record: bool = False
 
+import io
+import base64
 def get_image_base64(image: Image.Image) -> str:
-    import io
-    import base64
     buffered = io.BytesIO()
     image.save(buffered, format="JPEG")
-    img_str = base64.b64encode(buffered.getvalue()).decode()
-    return img_str
+    buffered.seek(0)
+    return base64.b64encode(buffered.read()).decode("utf-8")
+    
 
 
 def generate_images(positive_prompt: str, negative_prompt: str, num_of_images: int) -> List[Image.Image]:
@@ -76,17 +79,19 @@ Negative Prompt: Lamps, old books"""
 for i in range(100):    
     messages = [
             {"role": "system", "content": system_prompt},
-            {"role": "user", "content": "Example prompts (do not copy these) " + generated},
+            {"role": "user", "content": "Example prompts (avoid any negative prompts that has been here before) " + generated},
         ]
 
     while True:
+        
         completion = client.beta.chat.completions.parse(
-            model="gemini-2.5-flash-preview-05-20",
+            model="gpt-4.1",
             messages=messages,
             response_format=Output, 
         )
         print(completion.choices[0].message)
         if completion.choices[0].message.parsed.exit:
+            record = completion.choices[0].message.parsed.record
             break
         positive_prompt = completion.choices[0].message.parsed.positive_prompt
         negative_prompt = completion.choices[0].message.parsed.negative_prompt
@@ -109,9 +114,11 @@ for i in range(100):
         for image in images],
         })
         
-    with open("prompts.txt", "a") as f:
-        f.write(f"Positive Prompt: {positive_prompt}\n")
-        f.write(f"Negative Prompt: {negative_prompt}\n")
-        f.write("\n")
-    wandb.log({"image": wandb.Image(images[0], caption=f"Negative Prompt: {negative_prompt}")})
-    generated += f"\nPositive Prompt: {positive_prompt}\nNegative Prompt: {negative_prompt}\n"
+        
+    if record:
+        with open("prompts.txt", "a") as f:
+            f.write(f"Positive Prompt: {positive_prompt}\n")
+            f.write(f"Negative Prompt: {negative_prompt}\n")
+            f.write("\n")
+        wandb.log({"image": wandb.Image(images[0], caption=f"Negative Prompt: {negative_prompt}")})
+        generated += f"\nPositive Prompt: {positive_prompt}\nNegative Prompt: {negative_prompt}\n"

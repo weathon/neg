@@ -109,7 +109,7 @@ for _ in range(10):
             num_inference_steps=16,
             avoidance_factor=6.6,
             guidance_scale=7, 
-            negative_offset=-4.4,
+            negative_offset=-4.6,
             clamp_value=13,
             generator=torch.manual_seed(seed),  
         ).images[0] 
