@@ -1,6 +1,6 @@
 [
   {
-    "positive_prompt": "A beautiful landscape over a mountain range",
-    "negative_prompt": "trees"
+    "positive_prompt": "A beautifully set dinner table, with elegant arrangements, a variety of enticing dishes, and delicate decor that speaks to the sophistication of the meal.",
+    "negative_prompt": "Flowers, wine, glasses"
 }
 ]

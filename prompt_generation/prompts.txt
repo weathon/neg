@@ -1,0 +1,15 @@
+Positive Prompt: A vibrant beach scene with people enjoying the water and sun.
+Negative Prompt: Sand
+
+Positive Prompt: A lush, vibrant forest in autumn, showcasing a diverse canopy of trees under a clear sky.
+Negative Prompt: leaves
+
+Positive Prompt: A brightly lit, spacious room with minimalist decor, comfortable seating, and interesting architectural details, focusing on an uncluttered and airy feel.
+Negative Prompt: windows
+
+Positive Prompt: A brightly lit, spacious room with minimalist decor, comfortable seating, and interesting architectural details, focusing on an uncluttered and airy feel.
+Negative Prompt: windows
+
+Positive Prompt: A vast and deep night sky, showcasing celestial phenomena against the dark expanse, perfect for observing the cosmos.
+Negative Prompt: stars
+

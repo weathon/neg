@@ -107,20 +107,19 @@ for _ in range(10):
             positive_prompt,
             negative_prompt=negative_prompt,
             num_inference_steps=16,
-            avoidance_factor=7,
+            avoidance_factor=6.4,
             guidance_scale=7, 
-            negative_offset=-12,
+            negative_offset=-4,
+            clamp_value=13,
             generator=torch.manual_seed(seed),  
         ).images[0] 
         image.save("ours.png") 
         
-        image = pipe(
+        image = pipe_vanilla(
             positive_prompt,
             negative_prompt=negative_prompt,
             num_inference_steps=16,
-            avoidance_factor=0,
             guidance_scale=7, 
-            negative_offset=7,
             generator=torch.manual_seed(seed),
         ).images[0]
         image.save("vanilla.png")

@@ -807,7 +807,8 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
         avoidance_factor = 0,
         negative_offset = 0,
         weight_scale = 1.0,
-        return_steps = 0
+        return_steps = 0,
+        clamp_value = 15
     ):
         r"""
         Function invoked when calling the pipeline for generation.
@@ -1129,10 +1130,10 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                     # if t < 950:
                     original_norm = torch.linalg.norm(original_pred, keepdim=True)
                     weight_map = (weight_map) * avoidance_factor + negative_offset # only activate when it pass a threashold
-                    weight_map = torch.clip(weight_map, 0, 15)
+                    weight_map = torch.clip(weight_map, 0, clamp_value)
                     self.weight_maps.append(weight_map)
                     weight_map = weight_map.unsqueeze(0).unsqueeze(0)
-                    new_noise_pred = (original_pred - weight_map * (noise_pred_neg - uncon_noise_pred))/2
+                    new_noise_pred = (original_pred - weight_map * (noise_pred_neg - uncon_noise_pred)) #/2 should not /2, what if 0
                     # new_noise_pred = original_pred - self.guidance_scale * weight_map * (noise_pred_neg - uncon_noise_pred)
                     new_norm = torch.linalg.norm(new_noise_pred, keepdim=True) 
                     noise_pred = uncon_noise_pred + new_noise_pred  / new_norm * original_norm
