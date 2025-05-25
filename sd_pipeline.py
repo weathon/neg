@@ -808,7 +808,8 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
         negative_offset = 0,
         weight_scale = 1.0,
         return_steps = 0,
-        clamp_value = 15
+        clamp_value = 15,
+        vanilla=False
     ):
         r"""
         Function invoked when calling the pipeline for generation.
@@ -1077,7 +1078,7 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
         self.neg_maps = []
         intermediate_images = []
         self.weight_maps = []
-        
+        self.negative_guidance_scales = []
         with self.progress_bar(total=num_inference_steps) as progress_bar:
             for i, t in enumerate(timesteps):                    
                 if self.interrupt:
@@ -1110,37 +1111,43 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                 ).squeeze(0).squeeze(0)
                 for block in self.transformer.transformer_blocks:
                     block.attn.processor.attn_weight = None 
-                    
-                uncon_noise_pred = self.transformer(
-                    hidden_states=latent_model_input[0:1],
-                    timestep=timestep[0:1],
-                    encoder_hidden_states=uncond_embed,
-                    pooled_projections=pooled_uncon_embed,
-                    joint_attention_kwargs=self.joint_attention_kwargs,
-                    return_dict=False,
-                )[0]
+                
+                if not vanilla:
+                    uncon_noise_pred = self.transformer(
+                        hidden_states=latent_model_input[0:1],
+                        timestep=timestep[0:1],
+                        encoder_hidden_states=uncond_embed,
+                        pooled_projections=pooled_uncon_embed,
+                        joint_attention_kwargs=self.joint_attention_kwargs,
+                        return_dict=False,
+                    )[0]
                 # perform guidance
                 if self.do_classifier_free_guidance:
                     noise_pred_neg, noise_pred_text = noise_pred.chunk(2)
                     
-                    #  base scale should not be the same
-                    # noise_pred = uncon_noise_pred + (self.guidance_scale * (noise_pred_text - uncon_noise_pred)  \
-                    # - (self.guidance_scale + weight_map + negative_offset) * (noise_pred_neg - uncon_noise_pred))/2
-                    original_pred = self.guidance_scale * (noise_pred_text - uncon_noise_pred)
-                    # if t < 950:
-                    original_norm = torch.linalg.norm(original_pred, keepdim=True)
-                    weight_map = (weight_map) * avoidance_factor + negative_offset # only activate when it pass a threashold
-                    weight_map = torch.clip(weight_map, 0, clamp_value)
-                    self.weight_maps.append(weight_map)
-                    weight_map = weight_map.unsqueeze(0).unsqueeze(0)
-                    new_noise_pred = (original_pred - weight_map * (noise_pred_neg - uncon_noise_pred)) #/2 should not /2, what if 0
-                    # new_noise_pred = original_pred - self.guidance_scale * weight_map * (noise_pred_neg - uncon_noise_pred)
-                    new_norm = torch.linalg.norm(new_noise_pred, keepdim=True) 
-                    noise_pred = uncon_noise_pred + new_noise_pred  / new_norm * original_norm
-                    # else:
-                    #     noise_pred = original_pred + uncon_noise_pred
-                        
-                        
+                    if vanilla:
+                        noise_pred = noise_pred_neg + self.guidance_scale * (noise_pred_text - noise_pred_neg)
+                    else:
+                        #  base scale should not be the same
+                        # noise_pred = uncon_noise_pred + (self.guidance_scale * (noise_pred_text - uncon_noise_pred)  \
+                        # - (self.guidance_scale + weight_map + negative_offset) * (noise_pred_neg - uncon_noise_pred))/2
+                        original_pred = self.guidance_scale * (noise_pred_text - uncon_noise_pred)
+                        if t < 970:
+                            original_norm = torch.linalg.norm(original_pred, keepdim=True)
+                            weight_map = (weight_map) * avoidance_factor + negative_offset # only activate when it pass a threashold
+                            weight_map = torch.clip(weight_map, 0, clamp_value)
+                            weight_map = weight_map.unsqueeze(0).unsqueeze(0)
+                            new_noise_pred = (original_pred - weight_map * (noise_pred_neg - uncon_noise_pred)) #/2 should not /2, what if 0
+                            self.weight_maps.append(weight_map)
+                            # new_noise_pred = original_pred - self.guidance_scale * weight_map * (noise_pred_neg - uncon_noise_pred)
+                            new_norm = torch.linalg.norm(new_noise_pred, keepdim=True) 
+                            noise_pred = uncon_noise_pred + new_noise_pred  / new_norm * original_norm
+                            weight_map[weight_map==0] = torch.nan
+                            self.negative_guidance_scales.append(weight_map.nanmean().item())
+                        else:
+                            noise_pred = original_pred + uncon_noise_pred
+                            
+                
                     should_skip_layers = (
                         True
                         if i > num_inference_steps * skip_layer_guidance_start
