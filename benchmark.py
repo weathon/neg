@@ -107,9 +107,9 @@ for _ in range(10):
             positive_prompt,
             negative_prompt=negative_prompt,
             num_inference_steps=16,
-            avoidance_factor=6.4,
+            avoidance_factor=6.6,
             guidance_scale=7, 
-            negative_offset=-4,
+            negative_offset=-4.4,
             clamp_value=13,
             generator=torch.manual_seed(seed),  
         ).images[0] 
