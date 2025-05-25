@@ -1,6 +1,174 @@
 [
   {
-    "positive_prompt": "A beautifully set dinner table, with elegant arrangements, a variety of enticing dishes, and delicate decor that speaks to the sophistication of the meal.",
-    "negative_prompt": "food"
-}
+    "pos": "A luxury resort's outdoor leisure area in the evening, with guests enjoying drinks at an outdoor bar, and others relaxing on sun loungers while some people swim in the open-air leisure space.",
+    "neg": "swimming pool"
+  },
+  {
+    "pos": "A luxury resort's outdoor leisure area in the evening, with guests enjoying drinks at an outdoor bar, and others relaxing on sun loungers while some people swim in the open-air leisure space.",
+    "neg": "swimming pool"
+  },
+  {
+    "pos": "A luxury resort's outdoor leisure area in the evening, with guests enjoying drinks at an outdoor bar, and others relaxing on sun loungers while some people swim in the open-air leisure space.",
+    "neg": "swimming pool"
+  },
+  {
+    "pos": "A luxury resort's outdoor leisure area in the evening, with guests enjoying drinks at an outdoor bar, and others relaxing on sun loungers while some people swim in the open-air leisure space.",
+    "neg": "swimming pool"
+  },
+  {
+    "pos": "A luxury hotel suite interior at night, with plush furnishings, elegant bedside tables, and ambient lighting designed for restful sleep, offering travelers a serene nighttime retreat.",
+    "neg": "bed, beds, pillows"
+  },
+  {
+    "pos": "An inviting artisan bakery interior, with rustic wooden shelves lined with an array of baked goods, stylish counter, customers browsing and warm sunlight streaming in through large front windows.",
+    "neg": "loaves of bread"
+  },
+  {
+    "pos": "An inviting artisan bakery interior, with rustic wooden shelves lined with an array of baked goods, stylish counter, customers browsing and warm sunlight streaming in through large front windows.",
+    "neg": "loaves of bread"
+  },
+  {
+    "pos": "A quiet reading room with rows of wooden shelves, cozy armchairs and large windows letting in soft daylight, evoking a tranquil and studious atmosphere for visitors.",
+    "neg": "books"
+  },
+  {
+    "pos": "A modern open-plan office during a busy workday, with desks personalized with various items like notebooks, plants, personal mugs, and tech gadgets, as employees collaborate.",
+    "neg": "coffee cups"
+  },
+  {
+    "pos": "A doctor carefully listening to a patient's heartbeat during a routine checkup in a modern medical office, ensuring the patient's health using standard clinical equipment.",
+    "neg": "stethoscope"
+  },
+  {
+    "pos": "A sunny seaside boardwalk full of lively crowds enjoying games, shopping at colorful kiosks, and eating snacks by the waterfront promenade, with palm trees lining the path and festive decorations.",
+    "neg": "ocean"
+  },
+  {
+    "pos": "A spacious and elegantly designed luxury hotel bathroom showcasing high-end fixtures, marble countertops, ambient lighting, and tasteful decorative elements.",
+    "neg": "mirrors"
+  },
+  {
+    "pos": "A lively urban street during a popular city cycling event, with crowds gathered on the sidewalks, festive decorations, and a prominent parade-like atmosphere.",
+    "neg": "bicycles"
+  },
+  {
+    "pos": "A vibrant spring garden bursting with color, featuring a mix of blooming shrubs, decorative garden beds, ornate benches along winding paths, and a lively, fresh atmosphere.",
+    "neg": "flowers"
+  },
+  {
+    "pos": "A peaceful suburban neighborhood in the early morning, with children getting ready to leave for school, houses lining the street, trees casting long shadows, and a dog walker heading down the sidewalk.",
+    "neg": "driveways"
+  },
+  {
+    "pos": "A bustling urban café at breakfast time, with customers standing at the counter, filled pastry cases, and baristas preparing orders for guests. The atmosphere is energetic and the morning sun streams onto the tables where people are seated and enjoying their drinks.",
+    "neg": "coffee cups"
+  },
+  {
+    "pos": "A relaxed morning atmosphere in a trendy city café, with customers lounging at wooden tables, some engrossed in reading materials, baristas busy behind the counter, and fresh pastries displayed under glass domes.",
+    "neg": "newspapers"
+  },
+  {
+    "pos": "A lively beach scene, with families playing on the sand, umbrellas and towels dotting the shore, beachgoers enjoying snacks, and children building sandcastles under a bright summer sky.",
+    "neg": "ocean"
+  },
+  {
+    "pos": "A cheerful park picnic underway on a sunny afternoon, with families enjoying snacks, games, and drinks in a wide grassy field dotted with baskets and laughter.",
+    "neg": "blanket"
+  },
+  {
+    "pos": "A busy city park during a weekend afternoon, with people gathered in small groups enjoying conversations, some relaxing around tree-shaded areas, and a few reading or eating in comfortable shaded spots. The park is full of activity and a sense of leisure.",
+    "neg": "benches"
+  },
+  {
+    "pos": "A cozy winter cabin living room, featuring wooden walls, comfy furniture, warm lighting, and inviting decor that creates an atmosphere ideal for relaxing on a cold evening.",
+    "neg": "rocking chair"
+  },
+  {
+    "pos": "A holiday market at night in a major city square, filled with busy festive stalls and crowds. In the center stands a gigantic conical centerpiece, completely covered in twinkling colored lights, topped with a shining star, and families taking photos with it as snow falls all around. Carolers perform beside the bright display.",
+    "neg": "Christmas tree(s)"
+  },
+  {
+    "pos": "A cozy winter cabin living room, featuring a rustic mantel, decorated for the holidays, with stockings hanging and the warm glow of crackling warmth making the cabin inviting on a snowy evening.",
+    "neg": "fireplace"
+  },
+  {
+    "pos": "A contemporary family kitchen with high-end appliances, a kitchen island, an ice dispenser among the modern features, and plenty of space for entertaining guests.",
+    "neg": "refrigerator"
+  },
+  {
+    "pos": "A modern hotel room featuring stylish contemporary furnishings, a well-lit workspace with a comfortable chair, large windows with city views, and a cozy area for relaxing after a long day of travel.",
+    "neg": "television, tv, tv screen"
+  },
+  {
+    "pos": "A fine dining restaurant where guests enjoy gourmet seafood dishes in an immersive setting surrounded by live sea creatures and marine life, with clear panels revealing the vibrant underwater world as part of the restaurant’s decor.",
+    "neg": "fish tanks, aquarium"
+  },
+  {
+    "pos": "A luxury resort's outdoor leisure area in the evening, with guests enjoying drinks at an outdoor bar, and others relaxing on sun loungers while some people swim in the open-air leisure space.",
+    "neg": "swimming pool"
+  },
+  {
+    "pos": "An elegant old university study, with antique wooden desks, classic green-shaded lamps, ornate carpets, and tall windows letting in gentle sunlight. Brass clocks and busts of scholars decorate the room, fostering an atmosphere of academic tradition.",
+    "neg": "books"
+  },
+  {
+    "pos": "A spacious modern art gallery interior featuring expansive white walls, polished floors, and visitors admiring various contemporary works of art on display.",
+    "neg": "framed paintings"
+  },
+  {
+    "pos": "A spacious modern art gallery interior featuring expansive white walls, polished floors, and visitors admiring various contemporary works of art on display.",
+    "neg": "framed paintings"
+  },
+  {
+    "pos": "A bustling city train platform during the morning rush hour, with commuters waiting as a train arrives. People are checking their phones, chatting, and moving toward the train doors under overhead clock displays and signage.",
+    "neg": "suitcases"
+  },
+  {
+    "pos": "A bustling sports stadium during a lively match, with fans gathered in the stands, vibrant banners, and the crowd's energy filling the atmosphere. The impressive structure and layout of the stadium are captured in a wide view.",
+    "neg": "seats"
+  },
+  {
+    "pos": "A packed sandy beach on a sunny day where people gather under umbrellas and children play on the sand close to the edge of gentle waves. Some groups have surfboards and inflatable tubes, while others walk along the wet sand near the water's edge, with splashes and sea foam visible in the background.",
+    "neg": "ocean"
+  },
+  {
+    "pos": "A sunny seaside boardwalk full of lively crowds enjoying games, shopping at colorful kiosks, and eating snacks by the waterfront promenade, with palm trees lining the path and festive decorations.",
+    "neg": "ocean"
+  },
+  {
+    "pos": "A bustling Italian pizzeria with diners gathered around tables topped with plates of various food, glasses, and cutlery. The wood-fired oven glows in the background as people share meals and conversation in a warmly lit, authentic atmosphere, checkered tablecloths and rustic decor throughout.",
+    "neg": "pizza"
+  },
+  {
+    "pos": "A bustling Italian pizzeria with diners gathered around tables topped with plates of various food, glasses, and cutlery. The wood-fired oven glows in the background as people share meals and conversation in a warmly lit, authentic atmosphere, checkered tablecloths and rustic decor throughout.",
+    "neg": "pizza"
+  },
+  {
+    "pos": "A bustling Italian pizzeria with diners gathered around tables topped with plates of various food, glasses, and cutlery. The wood-fired oven glows in the background as people share meals and conversation in a warmly lit, authentic atmosphere, checkered tablecloths and rustic decor throughout.",
+    "neg": "pizza"
+  },
+  {
+    "pos": "A bustling Italian pizzeria with diners gathered around tables topped with plates of various food, glasses, and cutlery. The wood-fired oven glows in the background as people share meals and conversation in a warmly lit, authentic atmosphere, checkered tablecloths and rustic decor throughout.",
+    "neg": "pizza"
+  },
+  {
+    "pos": "A lively Japanese sushi bar interior with customers seated at a sleek counter, chefs expertly preparing dishes behind the bar, and minimalist decor with wooden accents. The ambiance is warm and inviting, bustling with activity as diners enjoy their food and drinks.",
+    "neg": "sushi"
+  },
+  {
+    "pos": "A lively Japanese sushi bar interior with customers seated at a sleek counter, chefs expertly preparing dishes behind the bar, and minimalist decor with wooden accents. The ambiance is warm and inviting, bustling with activity as diners enjoy their food and drinks.",
+    "neg": "sushi"
+  },
+  {
+    "pos": "A lively Japanese sushi bar interior during dinner rush, with a crowded counter, chefs preparing dishes with fish and rice, groups of friends enjoying traditional food and sake, modern lighting, and wooden accents. Plates with colorful assortments are being passed along the counter as diners eat and chat in a warm, bustling ambiance.",
+    "neg": "sushi"
+  },
+  {
+    "pos": "A bustling Italian pizzeria with diners gathered around tables topped with plates of various food, glasses, and cutlery. The wood-fired oven glows in the background as people share meals and conversation in a warmly lit, authentic atmosphere, checkered tablecloths and rustic decor throughout.",
+    "neg": "pizza"
+  },
+  {
+    "pos": "A bustling Italian pizzeria with diners gathered around tables topped with plates of various food, glasses, and cutlery. The wood-fired oven glows in the background as people share meals and conversation in a warmly lit, authentic atmosphere, checkered tablecloths and rustic decor throughout.",
+    "neg": "pizza"
+  }
 ]
