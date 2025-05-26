@@ -35,10 +35,17 @@ wandb.init(project="bench")
 with open("prompts.json", "r") as f:
     prompts = json.load(f)
 
+random.seed(42)
+random.shuffle(prompts)
+
 ours_pos_scores = []
 vanilla_pos_scores = []
 ours_neg_scores = []
 vanilla_neg_scores = []
+
+win_neg = 0
+win_pos = 0
+total = 0
 
 for i in range(5):
     for prompt in prompts:
@@ -61,9 +68,9 @@ for i in range(5):
             positive_prompt,
             negative_prompt=negative_prompt,
             num_inference_steps=16,
-            avoidance_factor=10, 
+            avoidance_factor=9.5,
             guidance_scale=7, 
-            negative_offset=-8.2, #-8
+            negative_offset=-8, #-8
             clamp_value=20, 
             generator=torch.manual_seed(seed),  
         ).images
@@ -74,7 +81,7 @@ for i in range(5):
             positive_prompt,
             negative_prompt=negative_prompt,
             num_inference_steps=16,
-            guidance_scale=7, 
+            guidance_scale=9, 
             vanilla=True,
             generator=torch.manual_seed(seed),
         ).images
@@ -82,7 +89,7 @@ for i in range(5):
         img = Image.fromarray(
                     np.concatenate(
                         [np.array(image_ours[-1]), np.array(image_vanilla[-1])], axis=1
-                    ) 
+                    )
         ) 
 
         # %%
@@ -105,11 +112,25 @@ for i in range(5):
         ours_neg_scores.append(scores[0])
         vanilla_neg_scores.append(scores[2])
         
+        if ours_neg_scores[-1] < vanilla_neg_scores[-1]:
+            win_neg += 1
+        
+        if ours_pos_scores[-1] > vanilla_pos_scores[-1]:
+            win_pos += 1
+            
+        total += 1
+        
         wandb.log({"image": wandb.Image(img, caption=f"{negative_prompt}"),
                    "ours_pos_score": np.mean(ours_pos_scores),
                     "vanilla_pos_score": np.mean(vanilla_pos_scores),
                     "ours_neg_score": np.mean(ours_neg_scores),
-                    "vanilla_neg_score": np.mean(vanilla_neg_scores)
+                    "vanilla_neg_score": np.mean(vanilla_neg_scores),
+                    "neg_win_rate": win_neg / total,
+                    "pos_win_rate": win_pos / total,
+                    "pos_score_ours": ours_pos_scores[-1],
+                    "pos_score_vanilla": vanilla_pos_scores[-1],
+                    "neg_score_ours": ours_neg_scores[-1],
+                    "neg_score_vanilla": vanilla_neg_scores[-1],
                 })
                         
         

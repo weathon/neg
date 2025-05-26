@@ -79,7 +79,7 @@ Negative Prompt: Lamps, old books"""
 for i in range(100):    
     messages = [
             {"role": "system", "content": system_prompt},
-            {"role": "user", "content": "Example prompts (avoid any negative prompts that has been here before) " + generated},
+            # {"role": "user", "content": "Example prompts (avoid any negative prompts that has been here before) " + generated},
         ]
 
     while True:
@@ -120,5 +120,8 @@ for i in range(100):
             f.write(f"Positive Prompt: {positive_prompt}\n")
             f.write(f"Negative Prompt: {negative_prompt}\n")
             f.write("\n")
+            negative_prompt = ""
+            positive_prompt = ""
+            
         wandb.log({"image": wandb.Image(images[0], caption=f"Negative Prompt: {negative_prompt}")})
         generated += f"\nPositive Prompt: {positive_prompt}\nNegative Prompt: {negative_prompt}\n"

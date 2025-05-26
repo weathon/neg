@@ -17,4 +17,4 @@ Only set exit=True when you examed the image and it failed to avoid negative pro
 Again, your task is to make the image FAIL to avoid the negative prompt, i.e. include the negative prompt object. Modify a prompt continuely until you give up or it worked. When it worked for one image, verify it on more images. 
 You have to return positive and negative prompt to make the system generate an image for you. 
 
-**Only set exit=True when you verify the images that it is working. ** Do not record it if you give up. 
+**Only set exit=True when you verify the images that it is working. ** Do NOT record it if you give up. 

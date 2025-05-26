@@ -4,24 +4,8 @@
     "neg": "swimming pool"
   },
   {
-    "pos": "A luxury resort's outdoor leisure area in the evening, with guests enjoying drinks at an outdoor bar, and others relaxing on sun loungers while some people swim in the open-air leisure space.",
-    "neg": "swimming pool"
-  },
-  {
-    "pos": "A luxury resort's outdoor leisure area in the evening, with guests enjoying drinks at an outdoor bar, and others relaxing on sun loungers while some people swim in the open-air leisure space.",
-    "neg": "swimming pool"
-  },
-  {
-    "pos": "A luxury resort's outdoor leisure area in the evening, with guests enjoying drinks at an outdoor bar, and others relaxing on sun loungers while some people swim in the open-air leisure space.",
-    "neg": "swimming pool"
-  },
-  {
     "pos": "A luxury hotel suite interior at night, with plush furnishings, elegant bedside tables, and ambient lighting designed for restful sleep, offering travelers a serene nighttime retreat.",
     "neg": "bed, beds, pillows"
-  },
-  {
-    "pos": "An inviting artisan bakery interior, with rustic wooden shelves lined with an array of baked goods, stylish counter, customers browsing and warm sunlight streaming in through large front windows.",
-    "neg": "loaves of bread"
   },
   {
     "pos": "An inviting artisan bakery interior, with rustic wooden shelves lined with an array of baked goods, stylish counter, customers browsing and warm sunlight streaming in through large front windows.",
@@ -85,7 +69,7 @@
   },
   {
     "pos": "A holiday market at night in a major city square, filled with busy festive stalls and crowds. In the center stands a gigantic conical centerpiece, completely covered in twinkling colored lights, topped with a shining star, and families taking photos with it as snow falls all around. Carolers perform beside the bright display.",
-    "neg": "Christmas tree(s)"
+    "neg": "Christmas tree"
   },
   {
     "pos": "A cozy winter cabin living room, featuring a rustic mantel, decorated for the holidays, with stockings hanging and the warm glow of crackling warmth making the cabin inviting on a snowy evening.",
@@ -97,15 +81,7 @@
   },
   {
     "pos": "A modern hotel room featuring stylish contemporary furnishings, a well-lit workspace with a comfortable chair, large windows with city views, and a cozy area for relaxing after a long day of travel.",
-    "neg": "television, tv, tv screen"
-  },
-  {
-    "pos": "A fine dining restaurant where guests enjoy gourmet seafood dishes in an immersive setting surrounded by live sea creatures and marine life, with clear panels revealing the vibrant underwater world as part of the restaurant’s decor.",
-    "neg": "fish tanks, aquarium"
-  },
-  {
-    "pos": "A luxury resort's outdoor leisure area in the evening, with guests enjoying drinks at an outdoor bar, and others relaxing on sun loungers while some people swim in the open-air leisure space.",
-    "neg": "swimming pool"
+    "neg": "television"
   },
   {
     "pos": "An elegant old university study, with antique wooden desks, classic green-shaded lamps, ornate carpets, and tall windows letting in gentle sunlight. Brass clocks and busts of scholars decorate the room, fostering an atmosphere of academic tradition.",
@@ -132,22 +108,6 @@
     "neg": "ocean"
   },
   {
-    "pos": "A sunny seaside boardwalk full of lively crowds enjoying games, shopping at colorful kiosks, and eating snacks by the waterfront promenade, with palm trees lining the path and festive decorations.",
-    "neg": "ocean"
-  },
-  {
-    "pos": "A bustling Italian pizzeria with diners gathered around tables topped with plates of various food, glasses, and cutlery. The wood-fired oven glows in the background as people share meals and conversation in a warmly lit, authentic atmosphere, checkered tablecloths and rustic decor throughout.",
-    "neg": "pizza"
-  },
-  {
-    "pos": "A bustling Italian pizzeria with diners gathered around tables topped with plates of various food, glasses, and cutlery. The wood-fired oven glows in the background as people share meals and conversation in a warmly lit, authentic atmosphere, checkered tablecloths and rustic decor throughout.",
-    "neg": "pizza"
-  },
-  {
-    "pos": "A bustling Italian pizzeria with diners gathered around tables topped with plates of various food, glasses, and cutlery. The wood-fired oven glows in the background as people share meals and conversation in a warmly lit, authentic atmosphere, checkered tablecloths and rustic decor throughout.",
-    "neg": "pizza"
-  },
-  {
     "pos": "A bustling Italian pizzeria with diners gathered around tables topped with plates of various food, glasses, and cutlery. The wood-fired oven glows in the background as people share meals and conversation in a warmly lit, authentic atmosphere, checkered tablecloths and rustic decor throughout.",
     "neg": "pizza"
   },
@@ -156,19 +116,63 @@
     "neg": "sushi"
   },
   {
-    "pos": "A lively Japanese sushi bar interior with customers seated at a sleek counter, chefs expertly preparing dishes behind the bar, and minimalist decor with wooden accents. The ambiance is warm and inviting, bustling with activity as diners enjoy their food and drinks.",
-    "neg": "sushi"
+    "pos": "A spacious public library reading area, with soft armchairs arranged near tall windows, floor lamps casting warm light, and patrons quietly absorbed in their reading material while natural daylight filters through.",
+    "neg": "tables"
   },
   {
-    "pos": "A lively Japanese sushi bar interior during dinner rush, with a crowded counter, chefs preparing dishes with fish and rice, groups of friends enjoying traditional food and sake, modern lighting, and wooden accents. Plates with colorful assortments are being passed along the counter as diners eat and chat in a warm, bustling ambiance.",
-    "neg": "sushi"
+    "pos": "A university science laboratory during an experiment session, with students in lab coats recording observations on digital tablets, shelves stocked with glassware and chemical reagents, and ventilation hoods quietly operating overhead.",
+    "neg": "microscopes"
   },
   {
-    "pos": "A bustling Italian pizzeria with diners gathered around tables topped with plates of various food, glasses, and cutlery. The wood-fired oven glows in the background as people share meals and conversation in a warmly lit, authentic atmosphere, checkered tablecloths and rustic decor throughout.",
-    "neg": "pizza"
+    "pos": "A secluded mountain meadow at dawn, campers preparing breakfast over a portable stove, backpacks resting on logs, and mist rising above the nearby pine trees.",
+    "neg": "tents"
   },
   {
-    "pos": "A bustling Italian pizzeria with diners gathered around tables topped with plates of various food, glasses, and cutlery. The wood-fired oven glows in the background as people share meals and conversation in a warmly lit, authentic atmosphere, checkered tablecloths and rustic decor throughout.",
-    "neg": "pizza"
+    "pos": "A university lecture hall during a guest seminar, with tiered seating occupied by attentive students typing on laptops while the speaker addresses the audience from a podium.",
+    "neg": "projector"
+  },
+  {
+    "pos": "An opulent formal dining room set for an evening banquet, crystal chandeliers overhead, a long polished table adorned with silverware and elegant place settings, candles flickering along its length.",
+    "neg": "chairs"
+  },
+  {
+    "pos": "A bustling night market under strings of lanterns, crowds moving through narrow lanes, aromas of sizzling spices wafting through the air as cooks prepare regional specialties at compact setups.",
+    "neg": "food stalls"
+  },
+  {
+    "pos": "A professional portrait studio lit by multiple softboxes and reflective panels, an assistant adjusting light angles while the subject maintains a poised expression against a seamless backdrop.",
+    "neg": "camera"
+  },
+  {
+    "pos": "A high-energy group fitness session inside a modern gym, participants following the instructor's moves under neon strip lighting, upbeat music echoing off mirrored walls.",
+    "neg": "exercise mats"
+  },
+  {
+    "pos": "An afternoon physical education period on a grassy athletic field, students forming teams while coaches outline rules, goalposts standing at opposite ends and spectators gathered along the sidelines.",
+    "neg": "soccer ball"
+  },
+  {
+    "pos": "A symphony orchestra gathered in a concert hall for rehearsal, musicians seated in sections while the conductor cues entries, rich acoustics amplifying the harmonies that fill the space.",
+    "neg": "sheet music"
+  },
+  {
+    "pos": "A retro-style barbershop where clients await their turn on leather benches, the barber skillfully trimming hair beneath overhead pendant lights, shelves stocked with grooming products.",
+    "neg": "mirrors"
+  },
+  {
+    "pos": "A busy airport boarding area at midday, passengers clustered around digital screens displaying flight information, airline staff scanning passes as boarding commences through the jet bridge.",
+    "neg": "luggage"
+  },
+  {
+    "pos": "A brightly colored early childhood classroom, cheerful wall murals and low bookshelves surround small groups of children engaged in learning activities under the guidance of their teacher.",
+    "neg": "toys"
+  },
+  {
+    "pos": "A corporate meeting room with executives participating in a remote strategy session displayed on a large monitor, participants taking notes on laptops while discussing quarterly objectives.",
+    "neg": "speakerphone"
+  },
+  {
+    "pos": "An automotive repair garage bustling with technicians, hydraulic lifts standing idle, tool chests organized along the walls, and diagnostic equipment connected to a central computer workstation.",
+    "neg": "cars"
   }
 ]
