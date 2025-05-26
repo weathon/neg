@@ -109,4 +109,3 @@ for i in range(20):
             positive_prompt = ""
             
         wandb.log({"image": wandb.Image(images[0], caption=f"Negative Prompt: {negative_prompt}")})
-        generated += f"\nPositive Prompt: {positive_prompt}\nNegative Prompt: {negative_prompt}\n"

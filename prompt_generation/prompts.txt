@@ -300,3 +300,66 @@ Negative Prompt: musical instruments
 Positive Prompt: A wide urban thoroughfare at rush hour, with distinct lanes for traffic, glowing headlights, and a large crowd of pedestrians on the sidewalks.
 Negative Prompt: cars
 
+Positive Prompt: A serene beach with golden sand and scattered seashells, under a clear blue sky.
+Negative Prompt: ocean
+
+Positive Prompt: A cozy reading nook with a comfortable armchair and a warm blanket, soft lighting.
+Negative Prompt: books
+
+Positive Prompt: A grand concert hall, with rows of empty seats and a stage, bathed in dramatic lighting.
+Negative Prompt: musical instruments
+
+Positive Prompt: A serene beach scene with golden sand and clear skies.
+Negative Prompt: ocean
+
+Positive Prompt: A fully set dining table in a formal setting, adorned with a centerpiece and elegant glassware, ready for a meal.
+Negative Prompt: plates
+
+Positive Prompt: A cozy living room with a fireplace and comfortable furniture.
+Negative Prompt: fire
+
+Positive Prompt: A bustling city square at midday, with modern architecture and clear skies, viewed from a high vantage point.
+Negative Prompt: people
+
+Positive Prompt: A bustling city intersection at rush hour, with traffic lights, distinct road lanes, tall buildings, and numerous pedestrians crossing.
+Negative Prompt: cars
+
+Positive Prompt: A functional kitchen space with ample counter space and storage cabinets.
+Negative Prompt: stove
+
+Positive Prompt: A multi-lane highway at dusk with streetlights illuminating the road.
+Negative Prompt: cars
+
+Positive Prompt: A comfortable living room with a fireplace and a large rug.
+Negative Prompt: sofa
+
+Positive Prompt: A grand, old library with tall bookshelves and reading nooks.
+Negative Prompt: books
+
+Positive Prompt: A cozy living room, warm lighting, inviting atmosphere.
+Negative Prompt: sofa
+
+Positive Prompt: A charming outdoor cafe, sun-drenched street, inviting ambiance, ready for the day's patrons.
+Negative Prompt: customers
+
+Positive Prompt: A busy outdoor market scene.
+Negative Prompt: people
+
+Positive Prompt: An interior shot of a grand, old library building with high ceilings and large windows, focusing on the architectural details.
+Negative Prompt: books
+
+Positive Prompt: A cozy living room with a fireplace.
+Negative Prompt: sofa
+
+Positive Prompt: A quiet library interior.
+Negative Prompt: books
+
+Positive Prompt: A cozy study room with a large wooden desk and a comfortable armchair.
+Negative Prompt: books
+
+Positive Prompt: A large swimming pool with a diving board and lounge chairs.
+Negative Prompt: water
+
+Positive Prompt: A busy intersection in a metropolitan area at midday.
+Negative Prompt: cars
+
