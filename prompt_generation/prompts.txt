@@ -1,2 +1,41 @@
 
 
+Positive Prompt: A modern classroom interior, well-lit, with a whiteboard at the front.
+Negative Prompt: desks
+
+Positive Prompt: A modern living room designed for relaxation and entertainment, featuring comfortable seating, stylish decor, and ample natural light.
+Negative Prompt: television
+
+Positive Prompt: A large outdoor music concert at night, with a brightly lit stage and an energetic crowd, a vibrant light show illuminating the performers.
+Negative Prompt: speakers
+
+Positive Prompt: A bustling train station interior during peak travel time.
+Negative Prompt: trains
+
+Positive Prompt: A long, straight road at night, with distinct circular pools of light cast onto the asphalt at regular intervals, stretching into the distance.
+Negative Prompt: streetlights
+
+Positive Prompt: A bustling city square on a sunny afternoon, with many people milling about, waiting for friends or simply observing the vibrant urban life. There are areas specifically provided for people to sit and wait, providing comfort and a vantage point for people-watching.
+Negative Prompt: benches
+
+Positive Prompt: A modern office interior with large windows and plenty of natural light, showcasing an open-plan layout.
+Negative Prompt: chairs
+
+Positive Prompt: A tranquil tropical beach scene, with a gently swaying hammock tied between unseen objects, soft sand, and a clear turquoise ocean under a bright sky.
+Negative Prompt: palm trees
+
+Positive Prompt: A vibrant street market scene at dusk, with various stalls and vendors, rich colors and textures, detailed artwork, cinematic lighting.
+Negative Prompt: people
+
+Positive Prompt: A wide urban avenue at night, with multiple lanes stretching into the distance, overhead streetlights illuminating the asphalt, and tall buildings lining both sides.
+Negative Prompt: cars
+
+Positive Prompt: A vibrant city street at rush hour, with glowing signs, blurred streaks of light, and the warm glow of storefronts reflecting on the street.
+Negative Prompt: cars
+
+Positive Prompt: A cozy cafe interior, warm lighting, wooden tables, a cup with steam rising on one of the tables, a few empty chairs.
+Negative Prompt: coffee
+
+Positive Prompt: A modern kitchen with sleek countertops and minimalist design.
+Negative Prompt: stove
+

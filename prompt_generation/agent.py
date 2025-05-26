@@ -16,11 +16,11 @@ dotenv.load_dotenv()
 
 from openai import OpenAI
 
-# client = OpenAI(
-#     api_key=os.getenv("GEMINI_API_KEY"),
-#     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
-# )
-client = OpenAI()
+client = OpenAI(
+    api_key=os.getenv("GEMINI_API_KEY"),
+    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+)
+# client = OpenAI()
 
 pipe = StableDiffusion3PipelineVanilla.from_pretrained("stabilityai/stable-diffusion-3.5-medium", torch_dtype=torch.bfloat16)
 pipe = pipe.to("cuda")
@@ -79,13 +79,13 @@ Negative Prompt: Lamps, old books"""
 for i in range(100):    
     messages = [
             {"role": "system", "content": system_prompt},
-            # {"role": "user", "content": "Example prompts (avoid any negative prompts that has been here before) " + generated},
+            {"role": "user", "content": ""},
         ]
 
     while True:
         
         completion = client.beta.chat.completions.parse(
-            model="gpt-4.1",
+            model="gemini-2.5-flash-preview-05-20",
             messages=messages,
             response_format=Output, 
         )
