@@ -26,7 +26,7 @@ from sd_pipeline import StableDiffusion3Pipeline
 from diffusers import StableDiffusion3Pipeline as StableDiffusion3PipelineVanilla
 
 from sd_processor import JointAttnProcessor2_0
-pipe = StableDiffusion3Pipeline.from_pretrained("stabilityai/stable-diffusion-3.5-medium", torch_dtype=torch.bfloat16)
+pipe = StableDiffusion3Pipeline.from_pretrained("stabilityai/stable-diffusion-3.5-large", torch_dtype=torch.bfloat16)
 pipe = pipe.to("cuda")
 for block in pipe.transformer.transformer_blocks:
     block.attn.processor = JointAttnProcessor2_0()
@@ -68,10 +68,11 @@ for i in range(5):
             positive_prompt,
             negative_prompt=negative_prompt,
             num_inference_steps=16,
-            avoidance_factor=9.5,
-            guidance_scale=7, 
-            negative_offset=-8, #-8
-            clamp_value=20, 
+            avoidance_factor=12,
+            guidance_scale=5,
+            negative_offset=-8,
+            start_step=4,
+            clamp_value=20,  
             generator=torch.manual_seed(seed),  
         ).images
 

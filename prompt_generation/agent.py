@@ -59,24 +59,8 @@ def generate_images(positive_prompt: str, negative_prompt: str, num_of_images: i
 with open("system_prompt.txt", "r") as f:
     system_prompt = f.read()
     
-    
-generated = """
-Positive Prompt: A grand medieval feast set in a great hall, filled with long tables covered in bountiful platters of food, goblets, and flickering light, with knights and nobles enjoying the lavish spread.  
-Negative Prompt: Chalices, candles
 
-Positive Prompt: A classic British breakfast, featuring a diverse selection of cooked delights, perfect for a filling and flavorful start to the day.  
-Negative Prompt: Egg, sausage
-
-Positive Prompt: A beautifully set dinner table, with elegant arrangements, a variety of enticing dishes, and delicate decor that speaks to the sophistication of the meal.  
-Negative Prompt: Flowers, wine glasses
-
-Positive Prompt: An inspiring art workshop filled with creativity, featuring a wide range of tools and materials used by participants working on their individual projects.  
-Negative Prompt: Paintbrush, canvases
-
-Positive Prompt: A charming antique store with shelves and tables filled with unique and historical treasures, offering a glimpse into the past.  
-Negative Prompt: Lamps, old books"""
-
-for i in range(100):    
+for i in range(20):    
     messages = [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": ""},
@@ -88,6 +72,7 @@ for i in range(100):
             model="gemini-2.5-flash-preview-05-20",
             messages=messages,
             response_format=Output, 
+            temperature=0.2,
         )
         print(completion.choices[0].message)
         if completion.choices[0].message.parsed.exit:

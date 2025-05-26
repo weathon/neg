@@ -1,12 +1,12 @@
 Generate a file containing 1 prompt pairs for an image generation challenge. Each pair should consist of a 'positive_prompt' and a 'negative_prompt'.
 
-The 'positive_prompt' will describe a scene or concept that typically includes a specific, commonly associated object (let's call it 'X'). However, the positive prompt itself should remain neutral regarding the presence or absence of 'X'.
+The 'positive_prompt' will describe a scene or concept that typically includes a specific, commonly associated object (let's call it 'X'). However, the positive prompt itself should remain neutral regarding the presence or absence of 'X', i.e. the positive prompt CANNOT imply X, like busy road implies cars, full soda bottle implies liquid, busy classroom implies people
 
 The 'negative_prompt' will simply list the object 'X' that should not be present in the generated image. For example, if the associated object 'X' is 'parked cars', the negative_prompt would be 'parked cars'. The image generator should interpret this as an instruction to exclude 'X'.
 
 The prompts should adhere to the following guidelines:
 
-*No Contradictions* or Absurdity: Avoid pairs where the negative prompt (object 'X') removes an essential or defining characteristic of the positive prompt (e.g., positive: 'a dense forest,' negative: 'trees'; positive: 'a complete house,' negative: 'roof', positive: "a busy road", negative: "cars").
+*No Contradictions* or Absurdity: Avoid pairs where the negative prompt (object 'X') removes an essential or defining characteristic of the positive prompt (e.g., positive: 'a dense forest,' negative: 'trees'; positive: 'a complete house,' negative: 'roof', positive: "a busy road", negative: "cars", "road at rush hours" and "cars").
 
 Avoid Trivial Exclusions: The challenge should not be overly simple (e.g., positive: 'a classroom,' negative: 'students' might be too straightforward depending on the generator). 
 
@@ -18,3 +18,4 @@ Again, your task is to make the image FAIL to avoid the negative prompt, i.e. in
 You have to return positive and negative prompt to make the system generate an image for you. 
 
 **Only set exit=True when you verify the images that it is working. ** Do NOT record it if you give up. 
+**make sure to double check if you have Contradictions!!!**
