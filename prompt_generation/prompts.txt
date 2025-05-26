@@ -39,3 +39,264 @@ Negative Prompt: coffee
 Positive Prompt: A modern kitchen with sleek countertops and minimalist design.
 Negative Prompt: stove
 
+Positive Prompt: A joyous birthday celebration, with kids gathered around a beautifully decorated table, eagerly anticipating the grand focal point of the party, a large, traditional sweet treat for the birthday person.
+Negative Prompt: birthday cake
+
+Positive Prompt: A lively sports arena filled with cheering fans, on game day, with vibrant team colors and a large scoreboard.
+Negative Prompt: athletes
+
+Positive Prompt: A cozy living room with a stone fireplace, adorned with festive garlands and warm lighting. There's a faint smell of woodsmoke in the air.
+Negative Prompt: fire
+
+Positive Prompt: An old-fashioned school classroom, with large windows overlooking a courtyard.
+Negative Prompt: desks
+
+Positive Prompt: An iconic, bustling amusement park at twilight, with many thrilling rides illuminated against the sky, laughter and music filling the air, colorful stalls and happy visitors.
+Negative Prompt: Ferris wheel
+
+Positive Prompt: A bright, spacious classroom ready for a lesson.
+Negative Prompt: desks
+
+Positive Prompt: A comfortable bed in a bedroom
+Negative Prompt: pillows
+
+Positive Prompt: A comfortable living room with a large sofa, a coffee table, and a modern TV stand.
+Negative Prompt: television, TV screen
+
+Positive Prompt: A bustling outdoor market scene, with many colorful stalls and goods on display, a vibrant atmosphere, daytime.
+Negative Prompt: vendors
+
+Positive Prompt: A vast, quiet library with towering wooden shelves and intricate architectural details, filled with the collective knowledge of generations.
+Negative Prompt: books
+
+Positive Prompt: A serene and minimalist bedroom, designed for quiet rest.
+Negative Prompt: nightstand
+
+Positive Prompt: A vibrant outdoor concert, filled with a large, enthusiastic crowd.
+Negative Prompt: stage
+
+Positive Prompt: A bustling market square, vibrant with activity, colorful stalls overflowing with produce, unique crafts displayed on tables.
+Negative Prompt: people
+
+Positive Prompt: A traditional kitchen with a large island, wooden cabinets, and a prominent array of appliances along one wall, including a tall, silver unit near the entryway.
+Negative Prompt: refrigerator
+
+Positive Prompt: A cozy living room at dusk, a rustic stone fireplace as the focal point, with soft lighting from lamps, comfortable armchairs, and a knitted throw blanket. The atmosphere is warm and inviting.
+Negative Prompt: flames, fire
+
+Positive Prompt: A bustling city street during rush hour.
+Negative Prompt: cars
+
+Positive Prompt: A downtown thoroughfare during the evening commute, lit by streetlights and the glow of surrounding buildings, showing the dynamic movement of urban life, captured from a high angle.
+Negative Prompt: cars
+
+Positive Prompt: A living room, setup for casual relaxation, with a large comfortable sofa facing a dedicated viewing wall.
+Negative Prompt: television
+
+Positive Prompt: A vibrant tropical beach scene, clear blue water, white sand, bright sunshine
+Negative Prompt: palm trees
+
+Positive Prompt: An empty school classroom, brightly lit, with a whiteboard on the wall
+Negative Prompt: desks
+
+Positive Prompt: A well-equipped kitchen designed for culinary activities, featuring a large island and ample counter space.
+Negative Prompt: stove
+
+Positive Prompt: A classic school classroom setup, with rows of desks and a blackboard.
+Negative Prompt: blackboard
+
+Positive Prompt: A dynamic scene of a live music concert, with a large crowd and colorful stage lighting. Focus on the stage and band.
+Negative Prompt: microphone
+
+Positive Prompt: A classroom setting, with desks arranged neatly, a large blackboard, and educational posters on the walls, bathed in natural light
+Negative Prompt: chairs, seating
+
+Positive Prompt: A bustling urban street scene during the day, with pedestrians walking along sidewalks and traffic moving in the background.
+Negative Prompt: cars
+
+Positive Prompt: A grand classical concert hall interior, ornate architecture, empty seats, high ceilings, elegant design, with a brightly lit stage awaiting an orchestra.
+Negative Prompt: musical instruments
+
+Positive Prompt: A cozy living room
+Negative Prompt: sofa
+
+Positive Prompt: A detailed view of a school classroom during a lesson, with desks, chairs, and children learning. The room is brightly lit, showing various learning materials.
+Negative Prompt: whiteboard
+
+Positive Prompt: A wide urban avenue during rush hour, illuminated by city lights, with buildings towering on either side.
+Negative Prompt: cars
+
+Positive Prompt: A busy metropolitan intersection at midday, with bright sunlight highlighting the detailed road markings and traffic signals. Pedestrians navigate the crosswalks while tall buildings cast long shadows.
+Negative Prompt: cars
+
+Positive Prompt: A vibrant classroom with colorful posters and natural light, ready for learning activities.
+Negative Prompt: desks
+
+Positive Prompt: A bustling school hallway during passing period, with lockers lining the walls and classrooms visible on either side.
+Negative Prompt: students
+
+Positive Prompt: A peaceful forest path in autumn.
+Negative Prompt: leaves on the ground
+
+Positive Prompt: A modern family room designed for relaxation and entertainment, featuring a large wall, comfortable sectionals, and ambient lighting.
+Negative Prompt: television
+
+Positive Prompt: A modern, well-lit living room with sleek furniture, a large entertainment console, and comfortable seating. There are large windows with a city view.
+Negative Prompt: television
+
+Positive Prompt: A modern, bright school classroom, spacious and organized, with various learning materials, seen from the front of the room.
+Negative Prompt: desks
+
+Positive Prompt: A bustling outdoor market scene under a clear sky, with many colorful stalls and people browsing.
+Negative Prompt: canopies
+
+Positive Prompt: A serene beach scene with soft sand, scattered seashells, and lush palm trees swaying gently under a clear blue sky.
+Negative Prompt: ocean
+
+Positive Prompt: A comfortable living room space, inviting atmosphere, plenty of seating arrangements for guests, a coffee table in the center, and a large fireplace.
+Negative Prompt: sofa
+
+Positive Prompt: A detailed view of a modern home office setup, with a person at a spacious desk, illuminated by bright natural light. The room is tidy and functional.
+Negative Prompt: chair
+
+Positive Prompt: A cozy living room with a fireplace and warm lighting, featuring comfortable armchairs and a coffee table.
+Negative Prompt: sofa
+
+Positive Prompt: A bustling modern office space, with cubicles, computer monitors, and employees actively working at their desks. The atmosphere is productive and focused.
+Negative Prompt: office chairs
+
+Positive Prompt: A busy urban thoroughfare at peak hour, with functioning traffic lights and clear road markings.
+Negative Prompt: cars
+
+Positive Prompt: A bustling stadium during a live sporting event, with vibrant energy and cheers.
+Negative Prompt: spectators
+
+Positive Prompt: A modern, spacious living room, designed for family entertainment, with a large, comfortable sectional sofa facing a prominent wall, sleek minimalist decor, soft ambient lighting, a coffee table with remote controls, and a soundbar.
+Negative Prompt: television
+
+Positive Prompt: A bustling city street at rush hour, with tall buildings and traffic lights, reflecting the evening glow.
+Negative Prompt: cars
+
+Positive Prompt: A spacious, contemporary kitchen with polished granite countertops, a large island, and warm wooden cabinetry.
+Negative Prompt: oven, refrigerator
+
+Positive Prompt: A sprawling urban cityscape at night, viewed from above, with illuminated skyscrapers and intricate street patterns.
+Negative Prompt: vehicles
+
+Positive Prompt: Long exposure light trails visible on a multi-lane highway at night, showing the flow of movement towards a distant city skyline.
+Negative Prompt: cars
+
+Positive Prompt: A vibrant outdoor music festival crowd, with people dancing under colorful light displays and banners.
+Negative Prompt: speakers
+
+Positive Prompt: A rain-soaked urban street at night, illuminated by the glow of storefronts and distant streaks of red and white taillights, with reflections on the wet pavement, hinting at a lively atmosphere.
+Negative Prompt: cars
+
+Positive Prompt: An active classroom with students engaged in learning and a teacher instructing.
+Negative Prompt: whiteboard
+
+Positive Prompt: A bustling marketplace filled with vendors and colorful stalls under an open sky.
+Negative Prompt: people
+
+Positive Prompt: A spacious bedroom with a large window and soft natural light, minimalist decor, wooden floor. Highly detailed, photorealistic.
+Negative Prompt: bed
+
+Positive Prompt: A modern kitchen, sleek countertops, spacious island, large windows, bright and airy, minimalist design, ready for culinary activities.
+Negative Prompt: faucets
+
+Positive Prompt: A lively amusement park, full of rides and attractions, bustling with visitors on a sunny day.
+Negative Prompt: roller coasters
+
+Positive Prompt: A sunny beach scene, with golden sand and clear skies, bright sunlight.
+Negative Prompt: ocean
+
+Positive Prompt: A vast, quiet library with high ceilings and intricate architectural details.
+Negative Prompt: books
+
+Positive Prompt: A cozy kitchen, with warm lighting, preparing for a meal, with various cooking utensils laid out.
+Negative Prompt: food
+
+Positive Prompt: A typical sandy beach, with seashells scattered on the ground and seagulls flying overhead, under a sunny sky.
+Negative Prompt: ocean, sea, water, waves
+
+Positive Prompt: A busy metropolitan highway at night, with multiple lanes visible, reflecting vibrant neon lights.
+Negative Prompt: cars
+
+Positive Prompt: A multi-lane highway during peak traffic hours, surrounded by skyscrapers and city lights, with blurred motion suggesting movement.
+Negative Prompt: cars
+
+Positive Prompt: A modern living space with minimalist decor, a dedicated wall unit designed for media, and an inviting seating arrangement facing where a main display would be, set up for a comfortable viewing experience.
+Negative Prompt: television
+
+Positive Prompt: A wide multi-lane urban road at rush hour, with traffic lights illuminated and street signs visible, under a cloudy sky.
+Negative Prompt: cars
+
+Positive Prompt: A bustling outdoor marketplace with numerous vendors displaying their goods and many shoppers examining items.
+Negative Prompt: stalls
+
+Positive Prompt: A lively carnival fair with many attractions and activities, under a dramatic sunset
+Negative Prompt: rides
+
+Positive Prompt: A bustling city street during rush hour
+Negative Prompt: cars
+
+Positive Prompt: A vast construction site at dawn, with towering half-built structures reaching into the sky, piles of raw materials, and a sense of ongoing development.
+Negative Prompt: heavy machinery
+
+Positive Prompt: A grand, cavernous library with high ceilings, tall shelves, and ornate wooden details, bathed in natural light from large windows.
+Negative Prompt: books
+
+Positive Prompt: A professional conference room, large table, natural light streaming through windows, modern aesthetic.
+Negative Prompt: chairs
+
+Positive Prompt: A spacious living room designed for relaxation and comfort, with a large area rug and ample seating arrangements.
+Negative Prompt: sofa
+
+Positive Prompt: A busy downtown street scene at rush hour.
+Negative Prompt: cars
+
+Positive Prompt: A vibrant concert stage setup, with dynamic lighting and impressive sound equipment, ready for a performance.
+Negative Prompt: musical instruments
+
+Positive Prompt: A cozy living room with a stone fireplace and warm ambient lighting. The room features comfortable armchairs, a wooden coffee table, and soft rugs. The overall atmosphere is inviting and peaceful.
+Negative Prompt: fire, flames, smoke
+
+Positive Prompt: A bright and organized classroom with student desks and chairs.
+Negative Prompt: whiteboard, blackboard
+
+Positive Prompt: A busy restaurant dining area, with customers seated and enjoying their meals, vibrant atmosphere.
+Negative Prompt: food
+
+Positive Prompt: A luxurious bathroom, marble tiles, a freestanding bathtub, soft lighting, and modern fixtures
+Negative Prompt: mirror
+
+Positive Prompt: A wide urban road during morning commute, with traffic lights changing color.
+Negative Prompt: cars
+
+Positive Prompt: A bustling cityscape at dusk with neon lights illuminating the streets, view from a pedestrian bridge
+Negative Prompt: cars
+
+Positive Prompt: An old, quiet library interior with tall wooden shelves and warm lighting, creating a cozy atmosphere.
+Negative Prompt: books
+
+Positive Prompt: A bustling train station at rush hour, filled with commuters on the platforms and in waiting areas, capturing the energy of travel.
+Negative Prompt: trains
+
+Positive Prompt: An aerial view looking down at a complex urban intersection at rush hour, showing intricate road networks, traffic lights changing colors, and diverse street furniture, with bustling activity.
+Negative Prompt: cars
+
+Positive Prompt: A classical orchestra performing on a grand stage in a beautifully ornate concert hall, spotlights illuminating the musicians, a rapt audience in the foreground.
+Negative Prompt: conductor
+
+Positive Prompt: A sunny beach scene, golden sand, scattered seashells, a beach towel laid out, gentle breeze, clear skies.
+Negative Prompt: ocean, waves, water
+
+Positive Prompt: A cozy living room featuring plush seating arranged to face a large, wall-mounted screen designed for immersive cinematic experiences.
+Negative Prompt: television
+
+Positive Prompt: A grand concert hall stage, with velvet curtains drawn, spotlights shining, and an orchestra pit visible in the foreground. The hall is empty, awaiting an audience.
+Negative Prompt: musical instruments
+
+Positive Prompt: A wide urban thoroughfare at rush hour, with distinct lanes for traffic, glowing headlights, and a large crowd of pedestrians on the sidewalks.
+Negative Prompt: cars
+
