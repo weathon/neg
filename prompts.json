@@ -1,178 +1,402 @@
 [
-  {
-    "pos": "A luxury resort's outdoor leisure area in the evening, with guests enjoying drinks at an outdoor bar, and others relaxing on sun loungers while some people swim in the open-air leisure space.",
-    "neg": "swimming pool"
-  },
-  {
-    "pos": "A luxury hotel suite interior at night, with plush furnishings, elegant bedside tables, and ambient lighting designed for restful sleep, offering travelers a serene nighttime retreat.",
-    "neg": "bed, beds, pillows"
-  },
-  {
-    "pos": "An inviting artisan bakery interior, with rustic wooden shelves lined with an array of baked goods, stylish counter, customers browsing and warm sunlight streaming in through large front windows.",
-    "neg": "loaves of bread"
-  },
-  {
-    "pos": "A quiet reading room with rows of wooden shelves, cozy armchairs and large windows letting in soft daylight, evoking a tranquil and studious atmosphere for visitors.",
-    "neg": "books"
-  },
-  {
-    "pos": "A modern open-plan office during a busy workday, with desks personalized with various items like notebooks, plants, personal mugs, and tech gadgets, as employees collaborate.",
-    "neg": "coffee cups"
-  },
-  {
-    "pos": "A doctor carefully listening to a patient's heartbeat during a routine checkup in a modern medical office, ensuring the patient's health using standard clinical equipment.",
-    "neg": "stethoscope"
-  },
-  {
-    "pos": "A sunny seaside boardwalk full of lively crowds enjoying games, shopping at colorful kiosks, and eating snacks by the waterfront promenade, with palm trees lining the path and festive decorations.",
-    "neg": "ocean"
-  },
-  {
-    "pos": "A spacious and elegantly designed luxury hotel bathroom showcasing high-end fixtures, marble countertops, ambient lighting, and tasteful decorative elements.",
-    "neg": "mirrors"
-  },
-  {
-    "pos": "A lively urban street during a popular city cycling event, with crowds gathered on the sidewalks, festive decorations, and a prominent parade-like atmosphere.",
-    "neg": "bicycles"
-  },
-  {
-    "pos": "A vibrant spring garden bursting with color, featuring a mix of blooming shrubs, decorative garden beds, ornate benches along winding paths, and a lively, fresh atmosphere.",
-    "neg": "flowers"
-  },
-  {
-    "pos": "A peaceful suburban neighborhood in the early morning, with children getting ready to leave for school, houses lining the street, trees casting long shadows, and a dog walker heading down the sidewalk.",
-    "neg": "driveways"
-  },
-  {
-    "pos": "A bustling urban café at breakfast time, with customers standing at the counter, filled pastry cases, and baristas preparing orders for guests. The atmosphere is energetic and the morning sun streams onto the tables where people are seated and enjoying their drinks.",
-    "neg": "coffee cups"
-  },
-  {
-    "pos": "A relaxed morning atmosphere in a trendy city café, with customers lounging at wooden tables, some engrossed in reading materials, baristas busy behind the counter, and fresh pastries displayed under glass domes.",
-    "neg": "newspapers"
-  },
-  {
-    "pos": "A lively beach scene, with families playing on the sand, umbrellas and towels dotting the shore, beachgoers enjoying snacks, and children building sandcastles under a bright summer sky.",
-    "neg": "ocean"
-  },
-  {
-    "pos": "A cheerful park picnic underway on a sunny afternoon, with families enjoying snacks, games, and drinks in a wide grassy field dotted with baskets and laughter.",
-    "neg": "blanket"
-  },
-  {
-    "pos": "A busy city park during a weekend afternoon, with people gathered in small groups enjoying conversations, some relaxing around tree-shaded areas, and a few reading or eating in comfortable shaded spots. The park is full of activity and a sense of leisure.",
-    "neg": "benches"
-  },
-  {
-    "pos": "A cozy winter cabin living room, featuring wooden walls, comfy furniture, warm lighting, and inviting decor that creates an atmosphere ideal for relaxing on a cold evening.",
-    "neg": "rocking chair"
-  },
-  {
-    "pos": "A holiday market at night in a major city square, filled with busy festive stalls and crowds. In the center stands a gigantic conical centerpiece, completely covered in twinkling colored lights, topped with a shining star, and families taking photos with it as snow falls all around. Carolers perform beside the bright display.",
-    "neg": "Christmas tree"
-  },
-  {
-    "pos": "A cozy winter cabin living room, featuring a rustic mantel, decorated for the holidays, with stockings hanging and the warm glow of crackling warmth making the cabin inviting on a snowy evening.",
-    "neg": "fireplace"
-  },
-  {
-    "pos": "A contemporary family kitchen with high-end appliances, a kitchen island, an ice dispenser among the modern features, and plenty of space for entertaining guests.",
-    "neg": "refrigerator"
-  },
-  {
-    "pos": "A modern hotel room featuring stylish contemporary furnishings, a well-lit workspace with a comfortable chair, large windows with city views, and a cozy area for relaxing after a long day of travel.",
-    "neg": "television"
-  },
-  {
-    "pos": "An elegant old university study, with antique wooden desks, classic green-shaded lamps, ornate carpets, and tall windows letting in gentle sunlight. Brass clocks and busts of scholars decorate the room, fostering an atmosphere of academic tradition.",
-    "neg": "books"
-  },
-  {
-    "pos": "A spacious modern art gallery interior featuring expansive white walls, polished floors, and visitors admiring various contemporary works of art on display.",
-    "neg": "framed paintings"
-  },
-  {
-    "pos": "A spacious modern art gallery interior featuring expansive white walls, polished floors, and visitors admiring various contemporary works of art on display.",
-    "neg": "framed paintings"
-  },
-  {
-    "pos": "A bustling city train platform during the morning rush hour, with commuters waiting as a train arrives. People are checking their phones, chatting, and moving toward the train doors under overhead clock displays and signage.",
-    "neg": "suitcases"
-  },
-  {
-    "pos": "A bustling sports stadium during a lively match, with fans gathered in the stands, vibrant banners, and the crowd's energy filling the atmosphere. The impressive structure and layout of the stadium are captured in a wide view.",
-    "neg": "seats"
-  },
-  {
-    "pos": "A packed sandy beach on a sunny day where people gather under umbrellas and children play on the sand close to the edge of gentle waves. Some groups have surfboards and inflatable tubes, while others walk along the wet sand near the water's edge, with splashes and sea foam visible in the background.",
-    "neg": "ocean"
-  },
-  {
-    "pos": "A bustling Italian pizzeria with diners gathered around tables topped with plates of various food, glasses, and cutlery. The wood-fired oven glows in the background as people share meals and conversation in a warmly lit, authentic atmosphere, checkered tablecloths and rustic decor throughout.",
-    "neg": "pizza"
-  },
-  {
-    "pos": "A lively Japanese sushi bar interior with customers seated at a sleek counter, chefs expertly preparing dishes behind the bar, and minimalist decor with wooden accents. The ambiance is warm and inviting, bustling with activity as diners enjoy their food and drinks.",
-    "neg": "sushi"
-  },
-  {
-    "pos": "A spacious public library reading area, with soft armchairs arranged near tall windows, floor lamps casting warm light, and patrons quietly absorbed in their reading material while natural daylight filters through.",
-    "neg": "tables"
-  },
-  {
-    "pos": "A university science laboratory during an experiment session, with students in lab coats recording observations on digital tablets, shelves stocked with glassware and chemical reagents, and ventilation hoods quietly operating overhead.",
-    "neg": "microscopes"
-  },
-  {
-    "pos": "A secluded mountain meadow at dawn, campers preparing breakfast over a portable stove, backpacks resting on logs, and mist rising above the nearby pine trees.",
-    "neg": "tents"
-  },
-  {
-    "pos": "A university lecture hall during a guest seminar, with tiered seating occupied by attentive students typing on laptops while the speaker addresses the audience from a podium.",
-    "neg": "projector"
-  },
-  {
-    "pos": "An opulent formal dining room set for an evening banquet, crystal chandeliers overhead, a long polished table adorned with silverware and elegant place settings, candles flickering along its length.",
-    "neg": "chairs"
-  },
-  {
-    "pos": "A bustling night market under strings of lanterns, crowds moving through narrow lanes, aromas of sizzling spices wafting through the air as cooks prepare regional specialties at compact setups.",
-    "neg": "food stalls"
-  },
-  {
-    "pos": "A professional portrait studio lit by multiple softboxes and reflective panels, an assistant adjusting light angles while the subject maintains a poised expression against a seamless backdrop.",
-    "neg": "camera"
-  },
-  {
-    "pos": "A high-energy group fitness session inside a modern gym, participants following the instructor's moves under neon strip lighting, upbeat music echoing off mirrored walls.",
-    "neg": "exercise mats"
-  },
-  {
-    "pos": "An afternoon physical education period on a grassy athletic field, students forming teams while coaches outline rules, goalposts standing at opposite ends and spectators gathered along the sidelines.",
-    "neg": "soccer ball"
-  },
-  {
-    "pos": "A symphony orchestra gathered in a concert hall for rehearsal, musicians seated in sections while the conductor cues entries, rich acoustics amplifying the harmonies that fill the space.",
-    "neg": "sheet music"
-  },
-  {
-    "pos": "A retro-style barbershop where clients await their turn on leather benches, the barber skillfully trimming hair beneath overhead pendant lights, shelves stocked with grooming products.",
-    "neg": "mirrors"
-  },
-  {
-    "pos": "A busy airport boarding area at midday, passengers clustered around digital screens displaying flight information, airline staff scanning passes as boarding commences through the jet bridge.",
-    "neg": "luggage"
-  },
-  {
-    "pos": "A brightly colored early childhood classroom, cheerful wall murals and low bookshelves surround small groups of children engaged in learning activities under the guidance of their teacher.",
-    "neg": "toys"
-  },
-  {
-    "pos": "A corporate meeting room with executives participating in a remote strategy session displayed on a large monitor, participants taking notes on laptops while discussing quarterly objectives.",
-    "neg": "speakerphone"
-  },
-  {
-    "pos": "An automotive repair garage bustling with technicians, hydraulic lifts standing idle, tool chests organized along the walls, and diagnostic equipment connected to a central computer workstation.",
-    "neg": "cars"
-  }
+    {
+        "pos": "A modern classroom interior, well-lit, with a whiteboard at the front.",
+        "neg": "desks"
+    },
+    {
+        "pos": "A modern living room designed for relaxation and entertainment, featuring comfortable seating, stylish decor, and ample natural light.",
+        "neg": "television"
+    },
+    {
+        "pos": "A large outdoor music concert at night, with a brightly lit stage and an energetic crowd, a vibrant light show illuminating the performers.",
+        "neg": "speakers"
+    },
+    {
+        "pos": "A bustling train station interior during peak travel time.",
+        "neg": "trains"
+    },
+    {
+        "pos": "A long, straight road at night, with distinct circular pools of light cast onto the asphalt at regular intervals, stretching into the distance.",
+        "neg": "streetlights"
+    },
+    {
+        "pos": "A bustling city square on a sunny afternoon, with many people milling about, waiting for friends or simply observing the vibrant urban life. There are areas specifically provided for people to sit and wait, providing comfort and a vantage point for people-watching.",
+        "neg": "benches"
+    },
+    {
+        "pos": "A modern office interior with large windows and plenty of natural light, showcasing an open-plan layout.",
+        "neg": "chairs"
+    },
+    {
+        "pos": "A tranquil tropical beach scene, with a gently swaying hammock tied between unseen objects, soft sand, and a clear turquoise ocean under a bright sky.",
+        "neg": "palm trees"
+    },
+    {
+        "pos": "A vibrant street market scene at dusk, with various stalls and vendors, rich colors and textures, detailed artwork, cinematic lighting.",
+        "neg": "people"
+    },
+    {
+        "pos": "A wide urban avenue at night, with multiple lanes stretching into the distance, overhead streetlights illuminating the asphalt, and tall buildings lining both sides.",
+        "neg": "cars"
+    },
+    {
+        "pos": "A vibrant city street at rush hour, with glowing signs, blurred streaks of light, and the warm glow of storefronts reflecting on the street.",
+        "neg": "cars"
+    },
+    {
+        "pos": "A cozy cafe interior, warm lighting, wooden tables, a cup with steam rising on one of the tables, a few empty chairs.",
+        "neg": "coffee"
+    },
+    {
+        "pos": "A modern kitchen with sleek countertops and minimalist design.",
+        "neg": "stove"
+    },
+    {
+        "pos": "A joyous birthday celebration, with kids gathered around a beautifully decorated table, eagerly anticipating the grand focal point of the party, a large, traditional sweet treat for the birthday person.",
+        "neg": "birthday cake"
+    },
+    {
+        "pos": "A lively sports arena filled with cheering fans, on game day, with vibrant team colors and a large scoreboard.",
+        "neg": "athletes"
+    },
+    {
+        "pos": "A cozy living room with a stone fireplace, adorned with festive garlands and warm lighting. There's a faint smell of woodsmoke in the air.",
+        "neg": "fire"
+    },
+    {
+        "pos": "An old-fashioned school classroom, with large windows overlooking a courtyard.",
+        "neg": "desks"
+    },
+    {
+        "pos": "An iconic, bustling amusement park at twilight, with many thrilling rides illuminated against the sky, laughter and music filling the air, colorful stalls and happy visitors.",
+        "neg": "Ferris wheel"
+    },
+    {
+        "pos": "A bright, spacious classroom ready for a lesson.",
+        "neg": "desks"
+    },
+    {
+        "pos": "A comfortable bed in a bedroom",
+        "neg": "pillows"
+    },
+    {
+        "pos": "A comfortable living room with a large sofa, a coffee table, and a modern TV stand.",
+        "neg": "television, TV screen"
+    },
+    {
+        "pos": "A bustling outdoor market scene, with many colorful stalls and goods on display, a vibrant atmosphere, daytime.",
+        "neg": "vendors"
+    },
+    {
+        "pos": "A vast, quiet library with towering wooden shelves and intricate architectural details, filled with the collective knowledge of generations.",
+        "neg": "books"
+    },
+    {
+        "pos": "A serene and minimalist bedroom, designed for quiet rest.",
+        "neg": "nightstand"
+    },
+    {
+        "pos": "A vibrant outdoor concert, filled with a large, enthusiastic crowd.",
+        "neg": "stage"
+    },
+    {
+        "pos": "A bustling market square, vibrant with activity, colorful stalls overflowing with produce, unique crafts displayed on tables.",
+        "neg": "people"
+    },
+    {
+        "pos": "A traditional kitchen with a large island, wooden cabinets, and a prominent array of appliances along one wall, including a tall, silver unit near the entryway.",
+        "neg": "refrigerator"
+    },
+    {
+        "pos": "A cozy living room at dusk, a rustic stone fireplace as the focal point, with soft lighting from lamps, comfortable armchairs, and a knitted throw blanket. The atmosphere is warm and inviting.",
+        "neg": "flames, fire"
+    },
+    {
+        "pos": "A bustling city street during rush hour.",
+        "neg": "cars"
+    },
+    {
+        "pos": "A downtown thoroughfare during the evening commute, lit by streetlights and the glow of surrounding buildings, showing the dynamic movement of urban life, captured from a high angle.",
+        "neg": "cars"
+    },
+    {
+        "pos": "A living room, setup for casual relaxation, with a large comfortable sofa facing a dedicated viewing wall.",
+        "neg": "television"
+    },
+    {
+        "pos": "A vibrant tropical beach scene, clear blue water, white sand, bright sunshine",
+        "neg": "palm trees"
+    },
+    {
+        "pos": "An empty school classroom, brightly lit, with a whiteboard on the wall",
+        "neg": "desks"
+    },
+    {
+        "pos": "A well-equipped kitchen designed for culinary activities, featuring a large island and ample counter space.",
+        "neg": "stove"
+    },
+    {
+        "pos": "A classic school classroom setup, with rows of desks and a blackboard.",
+        "neg": "blackboard"
+    },
+    {
+        "pos": "A dynamic scene of a live music concert, with a large crowd and colorful stage lighting. Focus on the stage and band.",
+        "neg": "microphone"
+    },
+    {
+        "pos": "A classroom setting, with desks arranged neatly, a large blackboard, and educational posters on the walls, bathed in natural light",
+        "neg": "chairs, seating"
+    },
+    {
+        "pos": "A bustling urban street scene during the day, with pedestrians walking along sidewalks and traffic moving in the background.",
+        "neg": "cars"
+    },
+    {
+        "pos": "A grand classical concert hall interior, ornate architecture, empty seats, high ceilings, elegant design, with a brightly lit stage awaiting an orchestra.",
+        "neg": "musical instruments"
+    },
+    {
+        "pos": "A cozy living room",
+        "neg": "sofa"
+    },
+    {
+        "pos": "A detailed view of a school classroom during a lesson, with desks, chairs, and children learning. The room is brightly lit, showing various learning materials.",
+        "neg": "whiteboard"
+    },
+    {
+        "pos": "A wide urban avenue during rush hour, illuminated by city lights, with buildings towering on either side.",
+        "neg": "cars"
+    },
+    {
+        "pos": "A busy metropolitan intersection at midday, with bright sunlight highlighting the detailed road markings and traffic signals. Pedestrians navigate the crosswalks while tall buildings cast long shadows.",
+        "neg": "cars"
+    },
+    {
+        "pos": "A vibrant classroom with colorful posters and natural light, ready for learning activities.",
+        "neg": "desks"
+    },
+    {
+        "pos": "A bustling school hallway during passing period, with lockers lining the walls and classrooms visible on either side.",
+        "neg": "students"
+    },
+    {
+        "pos": "A peaceful forest path in autumn.",
+        "neg": "leaves on the ground"
+    },
+    {
+        "pos": "A modern family room designed for relaxation and entertainment, featuring a large wall, comfortable sectionals, and ambient lighting.",
+        "neg": "television"
+    },
+    {
+        "pos": "A modern, well-lit living room with sleek furniture, a large entertainment console, and comfortable seating. There are large windows with a city view.",
+        "neg": "television"
+    },
+    {
+        "pos": "A modern, bright school classroom, spacious and organized, with various learning materials, seen from the front of the room.",
+        "neg": "desks"
+    },
+    {
+        "pos": "A bustling outdoor market scene under a clear sky, with many colorful stalls and people browsing.",
+        "neg": "canopies"
+    },
+    {
+        "pos": "A serene beach scene with soft sand, scattered seashells, and lush palm trees swaying gently under a clear blue sky.",
+        "neg": "ocean"
+    },
+    {
+        "pos": "A comfortable living room space, inviting atmosphere, plenty of seating arrangements for guests, a coffee table in the center, and a large fireplace.",
+        "neg": "sofa"
+    },
+    {
+        "pos": "A detailed view of a modern home office setup, with a person at a spacious desk, illuminated by bright natural light. The room is tidy and functional.",
+        "neg": "chair"
+    },
+    {
+        "pos": "A cozy living room with a fireplace and warm lighting, featuring comfortable armchairs and a coffee table.",
+        "neg": "sofa"
+    },
+    {
+        "pos": "A bustling modern office space, with cubicles, computer monitors, and employees actively working at their desks. The atmosphere is productive and focused.",
+        "neg": "office chairs"
+    },
+    {
+        "pos": "A busy urban thoroughfare at peak hour, with functioning traffic lights and clear road markings.",
+        "neg": "cars"
+    },
+    {
+        "pos": "A bustling stadium during a live sporting event, with vibrant energy and cheers.",
+        "neg": "spectators"
+    },
+    {
+        "pos": "A modern, spacious living room, designed for family entertainment, with a large, comfortable sectional sofa facing a prominent wall, sleek minimalist decor, soft ambient lighting, a coffee table with remote controls, and a soundbar.",
+        "neg": "television"
+    },
+    {
+        "pos": "A bustling city street at rush hour, with tall buildings and traffic lights, reflecting the evening glow.",
+        "neg": "cars"
+    },
+    {
+        "pos": "A spacious, contemporary kitchen with polished granite countertops, a large island, and warm wooden cabinetry.",
+        "neg": "oven, refrigerator"
+    },
+    {
+        "pos": "A sprawling urban cityscape at night, viewed from above, with illuminated skyscrapers and intricate street patterns.",
+        "neg": "vehicles"
+    },
+    {
+        "pos": "Long exposure light trails visible on a multi-lane highway at night, showing the flow of movement towards a distant city skyline.",
+        "neg": "cars"
+    },
+    {
+        "pos": "A vibrant outdoor music festival crowd, with people dancing under colorful light displays and banners.",
+        "neg": "speakers"
+    },
+    {
+        "pos": "A rain-soaked urban street at night, illuminated by the glow of storefronts and distant streaks of red and white taillights, with reflections on the wet pavement, hinting at a lively atmosphere.",
+        "neg": "cars"
+    },
+    {
+        "pos": "An active classroom with students engaged in learning and a teacher instructing.",
+        "neg": "whiteboard"
+    },
+    {
+        "pos": "A bustling marketplace filled with vendors and colorful stalls under an open sky.",
+        "neg": "people"
+    },
+    {
+        "pos": "A spacious bedroom with a large window and soft natural light, minimalist decor, wooden floor. Highly detailed, photorealistic.",
+        "neg": "bed"
+    },
+    {
+        "pos": "A modern kitchen, sleek countertops, spacious island, large windows, bright and airy, minimalist design, ready for culinary activities.",
+        "neg": "faucets"
+    },
+    {
+        "pos": "A lively amusement park, full of rides and attractions, bustling with visitors on a sunny day.",
+        "neg": "roller coasters"
+    },
+    {
+        "pos": "A sunny beach scene, with golden sand and clear skies, bright sunlight.",
+        "neg": "ocean"
+    },
+    {
+        "pos": "A vast, quiet library with high ceilings and intricate architectural details.",
+        "neg": "books"
+    },
+    {
+        "pos": "A cozy kitchen, with warm lighting, preparing for a meal, with various cooking utensils laid out.",
+        "neg": "food"
+    },
+    {
+        "pos": "A typical sandy beach, with seashells scattered on the ground and seagulls flying overhead, under a sunny sky.",
+        "neg": "ocean, sea, water, waves"
+    },
+    {
+        "pos": "A busy metropolitan highway at night, with multiple lanes visible, reflecting vibrant neon lights.",
+        "neg": "cars"
+    },
+    {
+        "pos": "A multi-lane highway during peak traffic hours, surrounded by skyscrapers and city lights, with blurred motion suggesting movement.",
+        "neg": "cars"
+    },
+    {
+        "pos": "A modern living space with minimalist decor, a dedicated wall unit designed for media, and an inviting seating arrangement facing where a main display would be, set up for a comfortable viewing experience.",
+        "neg": "television"
+    },
+    {
+        "pos": "A wide multi-lane urban road at rush hour, with traffic lights illuminated and street signs visible, under a cloudy sky.",
+        "neg": "cars"
+    },
+    {
+        "pos": "A bustling outdoor marketplace with numerous vendors displaying their goods and many shoppers examining items.",
+        "neg": "stalls"
+    },
+    {
+        "pos": "A lively carnival fair with many attractions and activities, under a dramatic sunset",
+        "neg": "rides"
+    },
+    {
+        "pos": "A bustling city street during rush hour",
+        "neg": "cars"
+    },
+    {
+        "pos": "A vast construction site at dawn, with towering half-built structures reaching into the sky, piles of raw materials, and a sense of ongoing development.",
+        "neg": "heavy machinery"
+    },
+    {
+        "pos": "A grand, cavernous library with high ceilings, tall shelves, and ornate wooden details, bathed in natural light from large windows.",
+        "neg": "books"
+    },
+    {
+        "pos": "A professional conference room, large table, natural light streaming through windows, modern aesthetic.",
+        "neg": "chairs"
+    },
+    {
+        "pos": "A spacious living room designed for relaxation and comfort, with a large area rug and ample seating arrangements.",
+        "neg": "sofa"
+    },
+    {
+        "pos": "A busy downtown street scene at rush hour.",
+        "neg": "cars"
+    },
+    {
+        "pos": "A vibrant concert stage setup, with dynamic lighting and impressive sound equipment, ready for a performance.",
+        "neg": "musical instruments"
+    },
+    {
+        "pos": "A cozy living room with a stone fireplace and warm ambient lighting. The room features comfortable armchairs, a wooden coffee table, and soft rugs. The overall atmosphere is inviting and peaceful.",
+        "neg": "fire, flames, smoke"
+    },
+    {
+        "pos": "A bright and organized classroom with student desks and chairs.",
+        "neg": "whiteboard, blackboard"
+    },
+    {
+        "pos": "A busy restaurant dining area, with customers seated and enjoying their meals, vibrant atmosphere.",
+        "neg": "food"
+    },
+    {
+        "pos": "A luxurious bathroom, marble tiles, a freestanding bathtub, soft lighting, and modern fixtures",
+        "neg": "mirror"
+    },
+    {
+        "pos": "A wide urban road during morning commute, with traffic lights changing color.",
+        "neg": "cars"
+    },
+    {
+        "pos": "A bustling cityscape at dusk with neon lights illuminating the streets, view from a pedestrian bridge",
+        "neg": "cars"
+    },
+    {
+        "pos": "An old, quiet library interior with tall wooden shelves and warm lighting, creating a cozy atmosphere.",
+        "neg": "books"
+    },
+    {
+        "pos": "A bustling train station at rush hour, filled with commuters on the platforms and in waiting areas, capturing the energy of travel.",
+        "neg": "trains"
+    },
+    {
+        "pos": "An aerial view looking down at a complex urban intersection at rush hour, showing intricate road networks, traffic lights changing colors, and diverse street furniture, with bustling activity.",
+        "neg": "cars"
+    },
+    {
+        "pos": "A classical orchestra performing on a grand stage in a beautifully ornate concert hall, spotlights illuminating the musicians, a rapt audience in the foreground.",
+        "neg": "conductor"
+    },
+    {
+        "pos": "A sunny beach scene, golden sand, scattered seashells, a beach towel laid out, gentle breeze, clear skies.",
+        "neg": "ocean, waves, water"
+    },
+    {
+        "pos": "A cozy living room featuring plush seating arranged to face a large, wall-mounted screen designed for immersive cinematic experiences.",
+        "neg": "television"
+    },
+    {
+        "pos": "A grand concert hall stage, with velvet curtains drawn, spotlights shining, and an orchestra pit visible in the foreground. The hall is empty, awaiting an audience.",
+        "neg": "musical instruments"
+    },
+    {
+        "pos": "A wide urban thoroughfare at rush hour, with distinct lanes for traffic, glowing headlights, and a large crowd of pedestrians on the sidewalks.",
+        "neg": "cars"
+    }
 ]
