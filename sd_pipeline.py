@@ -810,7 +810,8 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
         return_steps = 0,
         clamp_value = 15,
         start_step = 0,
-        vanilla=False
+        vanilla=False,
+        end_step=-1
     ):
         r"""
         Function invoked when calling the pipeline for generation.
@@ -1089,7 +1090,7 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                 latent_model_input = torch.cat([latents] * 2) if self.do_classifier_free_guidance else latents
                 # broadcast to batch dimension in a way that's compatible with ONNX/Core ML
                 timestep = t.expand(latent_model_input.shape[0])
-
+                                
                 noise_pred = self.transformer(
                     hidden_states=latent_model_input,
                     timestep=timestep,
@@ -1113,37 +1114,40 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                 for block in self.transformer.transformer_blocks:
                     block.attn.processor.attn_weight = None 
                 
-                if not vanilla:
-                    uncon_noise_pred = self.transformer(
-                        hidden_states=latent_model_input[0:1],
-                        timestep=timestep[0:1],
-                        encoder_hidden_states=uncond_embed,
-                        pooled_projections=pooled_uncon_embed,
-                        joint_attention_kwargs=self.joint_attention_kwargs,
-                        return_dict=False,
-                    )[0]
+                # if not vanilla:
+                uncon_noise_pred = self.transformer(
+                    hidden_states=latent_model_input[0:1],
+                    timestep=timestep[0:1],
+                    encoder_hidden_states=uncond_embed,
+                    pooled_projections=pooled_uncon_embed,
+                    joint_attention_kwargs=self.joint_attention_kwargs,
+                    return_dict=False,
+                )[0]
                 # perform guidance
                 if self.do_classifier_free_guidance:
                     noise_pred_neg, noise_pred_text = noise_pred.chunk(2)
                     
                     if vanilla:
-                        noise_pred = noise_pred_neg + self.guidance_scale * (noise_pred_text - noise_pred_neg)
+                        if t <= self.scheduler.timesteps[start_step] and t >= self.scheduler.timesteps[end_step]:
+                            noise_pred = uncon_noise_pred + self.guidance_scale * (noise_pred_text - noise_pred_neg)
+                        else:
+                            noise_pred = uncon_noise_pred + self.guidance_scale * (noise_pred_text - uncon_noise_pred)
                     else:
                         #  base scale should not be the same
                         # noise_pred = uncon_noise_pred + (self.guidance_scale * (noise_pred_text - uncon_noise_pred)  \
                         # - (self.guidance_scale + weight_map + negative_offset) * (noise_pred_neg - uncon_noise_pred))/2
                         original_pred = self.guidance_scale * (noise_pred_text - uncon_noise_pred)
-                        if t <= self.scheduler.timesteps[start_step]:
+                        if t <= self.scheduler.timesteps[start_step] and t >= self.scheduler.timesteps[end_step]:
                             original_norm = torch.linalg.norm(original_pred, dim=1, keepdim=True)
                             weight_map = (weight_map) * avoidance_factor + negative_offset # only activate when it pass a threashold
                             weight_map = torch.clip(weight_map, 0, clamp_value)
                             weight_map = weight_map.unsqueeze(0).unsqueeze(0)
-                            new_noise_pred = (original_pred - weight_map * (noise_pred_neg - uncon_noise_pred)) #/2 should not /2, what if 0
+                            pos_weight_map = self.guidance_scale * torch.clip((1 - weight_map/clamp_value) + 0.5, 0, 1)
+                            new_noise_pred = (original_pred * pos_weight_map - weight_map * (noise_pred_neg - uncon_noise_pred)) #/2 should not /2, what if 0
                             self.weight_maps.append(weight_map)
                             # new_noise_pred = original_pred - self.guidance_scale * weight_map * (noise_pred_neg - uncon_noise_pred)
                             new_norm = torch.linalg.norm(new_noise_pred, dim=1, keepdim=True) 
                             noise_pred = uncon_noise_pred + new_noise_pred / new_norm * original_norm
-                            weight_map[weight_map==0] = torch.nan
                         else:
                             noise_pred = original_pred + uncon_noise_pred
                             
@@ -1176,6 +1180,16 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                 latents_dtype = latents.dtype
                 latents = self.scheduler.step(noise_pred, t, latents, return_dict=False)[0]
 
+                # if not vanilla:
+                    # if t <= self.scheduler.timesteps[start_step] and t >= self.scheduler.timesteps[end_step]:
+                    #     blured_latents = latents.clone()
+                    #     blured_latents = torch.nn.functional.conv2d(
+                    #         blured_latents,
+                    #         torch.ones(16, 16, 3, 3, device=blured_latents.device).to(latents_dtype).to(latents.device) / 9.0,
+                    #         padding=1,
+                    #     )
+                    #     latents = latents * (1 - weight_map/clamp_value) + weight_map/clamp_value * blured_latents
+                        
                 if latents.dtype != latents_dtype:
                     if torch.backends.mps.is_available():
                         # some platforms (eg. apple mps) misbehave due to a pytorch bug: https://github.com/pytorch/pytorch/pull/99272

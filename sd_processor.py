@@ -107,9 +107,11 @@ class JointAttnProcessor2_0:
                 encoder_hidden_states_key_proj = attn.norm_added_k(encoder_hidden_states_key_proj)
 
             self.attn_weight = torch.torch.einsum("bhkd,bhqd->bhkq", encoder_hidden_states_key_proj[0:1,:,0:self.neg_prompt_len], query[0:1])
-            # self.attn_weight = torch.torch.einsum("bhqd,bhkd->bhqk", encoder_hidden_states_query_proj[0:1,:,:self.neg_prompt_len].mean(2).unsqueeze(2), key[0:1])
-            self.attn_weight = self.attn_weight / math.sqrt(head_dim)
+            # self.attn_weight = torch.torch.einsum("bhqd,bhkd->bhqk", encoder_hidden_states_query_proj[0:1,:,0:self.neg_prompt_len], key[0:1])
+            self.attn_weight = self.attn_weight / math.sqrt(head_dim) 
             self.attn_weight = self.attn_weight.mean(2).unsqueeze(2) # comapre with the padding
+            # self.attn_weight = torch.nn.functional.softmax(self.attn_weight, dim=-1) * self.attn_weight.mean()
+            
             # self.attn_weight = self.attn_weight.softmax(dim=2)[:,:,:-1].sum(2).unsqueeze(2) # comapre with the padding
             # instead of norm against first, use softmax on text dim and see how much it grab away from "image" similar as the camflague ? still image attend to text is where trees COULD be drawn, which is good, prevent before
             # self.attn_weight = self.attn_weight / torch.linalg.norm(self.attn_weight[:,:,0:1], dim=-1, keepdim=True)
