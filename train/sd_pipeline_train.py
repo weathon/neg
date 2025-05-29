@@ -1106,12 +1106,7 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                 
                 self.neg_maps.append(torch.stack([block.attn.processor.attn_weight for block in self.transformer.transformer_blocks]))
                 weight_map = self.neg_maps[-1].mean((1,2,3)).reshape(-1, width//16, height//16)
-                weight_map = torch.nn.functional.interpolate(
-                    weight_map.unsqueeze(0),
-                    size=(height // 8, width // 8),
-                    mode="bicubic", 
-                    align_corners=True, 
-                ).squeeze(0).squeeze(0)
+                
                 for block in self.transformer.transformer_blocks:
                     block.attn.processor.attn_weight = None 
                 
@@ -1138,7 +1133,15 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                         #  base scale should not be the same
                         # noise_pred = uncon_noise_pred + (self.guidance_scale * (noise_pred_text - uncon_noise_pred)  \
                         # - (self.guidance_scale + weight_map + negative_offset) * (noise_pred_neg - uncon_noise_pred))/2
-                        noise_pred = adapter(weight_map, t)[0].unsqueeze(1) * torch.cat(
+                        weights = adapter(weight_map, t)
+                        weights = torch.nn.functional.interpolate(
+                            weights,
+                            size=(height // 8, width // 8),
+                            mode="bicubic", 
+                            align_corners=True, 
+                        ).squeeze(0).unsqueeze(1)
+
+                        noise_pred = weights * torch.cat(
                             [uncon_noise_pred, noise_pred_text, noise_pred_neg], dim=0)
                         noise_pred = noise_pred.to(dtype=latent_model_input.dtype, device=latent_model_input.device)
                         noise_pred = noise_pred.mean(0).unsqueeze(0)
