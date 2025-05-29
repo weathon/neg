@@ -38,17 +38,33 @@ model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32", torch_dtype=to
 
 
 
-positive_prompt = ["A bright, spacious kitchen with an island, stainless steel appliances, a large window, and a decorative fruit bowl on the counter.",
+positive_prompt = ["A bright, spacious kitchen with an island, stainless steel appliances",
                     "a wide sandy beach under a sunny sky",
                     "a beautiful Canada landscape, in bob ross style, with a river, mountains",
                     "A quiet reading room with rows of wooden shelves, cozy armchairs and large windows letting in soft daylight, evoking a tranquil and studious atmosphere for visitors.",
-                    "A modern kitchen, sleek countertops, spacious island, large windows, bright and airy, minimalist design, ready for culinary activities."]
-negative_prompt = ["food",
+                    "A modern kitchen, sleek countertops, spacious island, large windows, bright and airy, minimalist design, ready for culinary activities.",
+                    "A grand medieval feast set in a great hall, filled with long tables covered in bountiful platters of food, goblets, and flickering light, with knights and nobles enjoying the lavish spread.",
+                    "A grand medieval feast set in a great hall, filled with long tables covered in bountiful platters of food, goblets, and flickering light, with knights and nobles enjoying the lavish spread.",
+                    "A classic British breakfast, featuring a diverse selection of cooked delights, perfect for a filling and flavorful start to the day.",
+                    "A beautifully set dinner table, with elegant arrangements, a variety of enticing dishes, and delicate decor that speaks to the sophistication of the meal.",
+                    "An inspiring art workshop filled with creativity, featuring a wide range of tools and materials used by participants working on their individual projects.",
+                    "A charming antique store with shelves and tables filled with unique and historical treasures, offering a glimpse into the past.",
+                    ]
+
+negative_prompt = ["microwave",
                     "ocean",
                     "trees",
                     "book",
-                    "faucets"] 
+                    "faucets",
+                    "chalices",
+                    "candles",
+                    "Egg, sausage",
+                    "Flowers, wine glasses",
+                    "Paintbrush, canvases",
+                    "Lamps, books" 
+                    ] 
 
+assert len(positive_prompt) == len(negative_prompt), "Positive and negative prompts must have the same length"
 # %%
 wandb.init(project="train")
 from adapter import Adapter
@@ -79,7 +95,7 @@ pipe.transformer.enable_gradient_checkpointing()
 loss_fn = torch.nn.CrossEntropyLoss()
 
 seed = 42
-for epoch in range(200):
+for epoch in range(100):
     for idx in range(len(positive_prompt)):
         for block in pipe.transformer.transformer_blocks:
             block.attn.processor.neg_prompt_len=max([

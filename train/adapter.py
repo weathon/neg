@@ -7,9 +7,11 @@ class Adapter(nn.Module):
         super(Adapter, self).__init__()
         self.conv1 = nn.Conv2d(25, 32, kernel_size=3, stride=1, padding=0)
         self.relu1 = nn.ReLU()
+        self.conv2 = nn.Conv2d(32, 32, kernel_size=1, stride=1, padding=0)
+        self.relu2 = nn.ReLU()
         self.conv2 = nn.Conv2d(32, 16, kernel_size=1, stride=1, padding=0)
         self.relu2 = nn.ReLU()
-        self.conv3 = nn.Conv2d(16, 3, kernel_size=3, stride=1, padding=0)
+        self.conv3 = nn.Conv2d(16, 3, kernel_size=1, stride=1, padding=0)
         
     
     def train_init(self):
@@ -43,4 +45,5 @@ class Adapter(nn.Module):
         x = self.relu2(x)
         x = self.conv3(x)
         return x
+
     
