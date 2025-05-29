@@ -17,7 +17,7 @@ class Adapter(nn.Module):
         optimizer = torch.optim.Adam(self.parameters(), lr=0.001)
         self.train()
         
-        for epoch in range(200):
+        for epoch in range(5000):
             optimizer.zero_grad()
             attention = torch.randn(24, 128, 128)
             t = torch.randn(1) * 1000
