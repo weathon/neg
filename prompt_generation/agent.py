@@ -1,4 +1,3 @@
-from agents import Agent, ModelSettings, function_tool, Runner
 from typing import List
 from PIL import Image
 import torch
@@ -16,11 +15,11 @@ dotenv.load_dotenv()
 
 from openai import OpenAI
 
-client = OpenAI(
-    api_key=os.getenv("GEMINI_API_KEY"),
-    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
-)
-# client = OpenAI()
+# client = OpenAI(
+#     api_key=os.getenv("GEMINI_API_KEY"),
+#     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+# )
+client = OpenAI()
 
 pipe = StableDiffusion3PipelineVanilla.from_pretrained("stabilityai/stable-diffusion-3.5-medium", torch_dtype=torch.bfloat16)
 pipe = pipe.to("cuda")
@@ -69,10 +68,9 @@ for i in range(20):
     while True:
         
         completion = client.beta.chat.completions.parse(
-            model="gemini-2.5-flash-preview-05-20",
+            model="o3",
             messages=messages,
             response_format=Output, 
-            temperature=0.2,
         )
         print(completion.choices[0].message)
         if completion.choices[0].message.parsed.exit:

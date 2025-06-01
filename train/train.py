@@ -88,14 +88,16 @@ def process_image_with_grad(image, image_mean, image_std):
     return image
     
     
-optimizer = torch.optim.AdamW(adapter.parameters(), lr=5e-5)
+optimizer = torch.optim.AdamW(adapter.parameters(), lr=5e-5, weight_decay=0.001)
+scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=30, eta_min=0.0)
 pipe.transformer.enable_gradient_checkpointing()
 
 
 loss_fn = torch.nn.CrossEntropyLoss()
 
 seed = 42
-for epoch in range(100):
+os.makedirs("checkpoint", exist_ok=True)
+for epoch in range(30):
     for idx in range(len(positive_prompt)):
         for block in pipe.transformer.transformer_blocks:
             block.attn.processor.neg_prompt_len=max([
@@ -119,6 +121,8 @@ for epoch in range(100):
             negative_prompt=negative_prompt[idx],
             num_inference_steps=13,
             adapter=adapter.cuda(),
+            width=416,
+            height=416, #different size, different resize, do not want to deal with that 
             # generator=torch.manual_seed(seed),
         ).images
 
@@ -143,5 +147,7 @@ for epoch in range(100):
         optimizer.step()
         
         wandb.log({"loss": loss.item(), "image": wandb.Image(pil, caption=negative_prompt[idx])})
-
-
+    if epoch % 10 == 0:
+        torch.save(adapter.state_dict(), f"checkpoint/adapter_epoch_{epoch}.pth")
+        print(f"Saved checkpoint at epoch {epoch}")
+    scheduler.step()

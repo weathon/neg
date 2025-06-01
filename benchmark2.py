@@ -68,11 +68,9 @@ for i in range(5):
             positive_prompt,
             negative_prompt=negative_prompt,
             num_inference_steps=16,
-            avoidance_factor=12,
-            guidance_scale=5,
-            negative_offset=-8,
-            start_step=4,
-            clamp_value=20,  
+            avoidance_factor = 11.458,
+            negative_offset = -6.514,
+            clamp_value = 10.419,
             generator=torch.manual_seed(seed),  
         ).images
 

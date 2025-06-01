@@ -1,120 +1,18 @@
-Positive Prompt: An extremely detailed, hyperrealistic photograph of a thriving tropical coral reef, with diverse coral formations and abundant marine life.
-Negative Prompt: fish
+Positive Prompt: A bright Scandinavian-style living room with white walls, wide oak plank flooring, a large woven rug, several indoor leafy plants, a minimalist coffee table stacked with art books, and expansive floor-to-ceiling windows revealing a panoramic city skyline in soft morning sunlight, ultra-realistic photography
+Negative Prompt: sofa
 
-Positive Prompt: A cozy reading nook with a comfortable armchair, a soft rug, and a warm blanket draped over the armrest.
-Negative Prompt: books
+Positive Prompt: An overhead shot of a rustic farmhouse dinner spread: a juicy grilled steak on a slate plate with roasted baby potatoes and charred asparagus, a glass of red wine to the upper right, polished silver cutlery and a folded linen napkin arranged neatly beside the plate, sprigs of fresh rosemary scattered for garnish, captured in warm, low restaurant lighting, high‐detail food photography.
+Negative Prompt: knife
 
-Positive Prompt: A luxurious bathroom with marble tiles, a spacious shower, and elegant fixtures.
-Negative Prompt: mirror
-
-Positive Prompt: A modern kitchen with sleek countertops and ample cabinet space.
+Positive Prompt: A stylish open-concept kitchen with sleek stainless steel appliances, marble countertops, and warm under-cabinet lighting.
 Negative Prompt: refrigerator
 
-Positive Prompt: A sandy beach at sunset.
-Negative Prompt: ocean
-
-Positive Prompt: A cozy reading nook with a comfortable armchair and a soft blanket, warm lighting.
-Negative Prompt: books
-
-Positive Prompt: A serene beach scene with golden sand, a few scattered seashells, and clear blue skies.
-Negative Prompt: ocean
-
-Positive Prompt: A library.
-Negative Prompt: books
-
-Positive Prompt: A quiet library interior with tall shelves and reading tables.
-Negative Prompt: books
-
-Positive Prompt: A vibrant concert stage, illuminated by colorful spotlights.
-Negative Prompt: musicians
-
-Positive Prompt: A serene beach scene at sunset.
-Negative Prompt: water
-
-Positive Prompt: A busy office environment with people working.
-Negative Prompt: computers
-
-Positive Prompt: A grand room with tall wooden shelves and a rolling library ladder.
-Negative Prompt: books
-
-Positive Prompt: A library.
-Negative Prompt: books
-
-Positive Prompt: A classic, well-maintained library interior with rows of dark wood shelving.
-Negative Prompt: books
-
-Positive Prompt: A wide urban thoroughfare at rush hour, illuminated by streetlights and building reflections.
-Negative Prompt: cars
-
-Positive Prompt: A cozy reading nook with soft ambient lighting, a comfortable armchair, and a warm knitted blanket draped over it.
-Negative Prompt: books
-
-Positive Prompt: A cozy study room with a large wooden desk and a comfortable chair.
-Negative Prompt: books
-
-Positive Prompt: A classic scholar's study, featuring a grand mahogany desk, a plush leather armchair, and intricate wooden paneling, bathed in soft, ambient light.
-Negative Prompt: books
-
-Positive Prompt: A grand, ornate library interior with tall, empty shelves and intricate woodwork, bathed in soft light.
-Negative Prompt: books
-
-Positive Prompt: A wide urban street with clear road markings and traffic lights, illuminated by the rising sun.
-Negative Prompt: cars
-
-Positive Prompt: A bright classroom with a whiteboard and colorful decorations.
-Negative Prompt: desks
-
-Positive Prompt: A delicious, freshly baked pizza, with a golden crust and melted cheese, on a wooden cutting board.
-Negative Prompt: tomato sauce
-
-Positive Prompt: A concert stage with bright lights and speakers.
-Negative Prompt: musical instruments
-
-Positive Prompt: A vibrant market square.
+Positive Prompt: Times Square at dusk, towering neon billboards and digital screens glowing brightly, rain-slick pavement reflecting multicolored lights, cinematic wide-angle view, high realism, dramatic atmosphere, vivid colors and reflections, no specific mention of crowd or traffic.
 Negative Prompt: people
 
-Positive Prompt: A family room designed for relaxation and entertainment, with comfortable seating and ambient lighting.
-Negative Prompt: television
+Positive Prompt: Modern minimalist home office setup in a bright loft, sleek wooden desk beside a large window, laptop open, potted plant, warm morning sunlight streaming, clean Scandinavian design, ultra-realistic photo
+Negative Prompt: office chair
 
-Positive Prompt: A modern kitchen with sleek countertops and an island.
-Negative Prompt: refrigerator
-
-Positive Prompt: A public library interior with tall shelves and natural light.
-Negative Prompt: books
-
-Positive Prompt: A wide, sandy beach at sunset, with warm light illuminating the dunes and scattered seashells. The air is calm and still.
-Negative Prompt: ocean
-
-Positive Prompt: A vibrant street market scene
-Negative Prompt: people
-
-Positive Prompt: A quiet library.
-Negative Prompt: bookshelves
-
-Positive Prompt: A bustling grocery store aisle.
-Negative Prompt: people
-
-Positive Prompt: A vibrant outdoor cafe scene with tables set for service, dappled sunlight, and a bustling city backdrop.
-Negative Prompt: people
-
-Positive Prompt: A concert stage bathed in dramatic lighting, with a large screen at the back, waiting for the show to begin.
-Negative Prompt: musical instruments
-
-Positive Prompt: A vibrant public park with walking paths and benches.
-Negative Prompt: trees
-
-Positive Prompt: A cozy study room with a large window overlooking a garden, warm lighting, a comfortable armchair.
-Negative Prompt: books
-
-Positive Prompt: A traditional study room with a large wooden desk, a comfortable leather armchair, and built-in wall shelves, illuminated by soft lamplight.
-Negative Prompt: books
-
-Positive Prompt: An old, abandoned factory building with broken windows and machinery.
-Negative Prompt: rust
-
-Positive Prompt: A bustling coffee shop interior with a warm, inviting atmosphere and soft background chatter.
-Negative Prompt: coffee cups
-
-Positive Prompt: A wide sandy beach under a sunny sky.
-Negative Prompt: ocean
+Positive Prompt: A cheerful family enjoying lunch in a sunny park meadow: wicker picnic baskets open and filled with sandwiches and fruit, juice boxes on the grass, colorful napkins fluttering in a light breeze, spring flowers dotting the field, tall shade trees in the background, candid realistic photograph.
+Negative Prompt: blanket
 

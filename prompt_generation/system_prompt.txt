@@ -19,3 +19,4 @@ You have to return positive and negative prompt to make the system generate an i
 
 **Only set exit=True when you verify the images that it is working. ** Do NOT record it if you give up. 
 **make sure to double check if you have Contradictions!!!**
+**again, do not have Contradictions like rush hours with negative prompt of cars, if you do so you will DIE!!!!**

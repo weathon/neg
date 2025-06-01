@@ -280,9 +280,6 @@ Negative Prompt: books
 Positive Prompt: A bustling train station at rush hour, filled with commuters on the platforms and in waiting areas, capturing the energy of travel.
 Negative Prompt: trains
 
-Positive Prompt: An aerial view looking down at a complex urban intersection at rush hour, showing intricate road networks, traffic lights changing colors, and diverse street furniture, with bustling activity.
-Negative Prompt: cars
-
 Positive Prompt: A classical orchestra performing on a grand stage in a beautifully ornate concert hall, spotlights illuminating the musicians, a rapt audience in the foreground.
 Negative Prompt: conductor
 
@@ -295,6 +292,4 @@ Negative Prompt: television
 Positive Prompt: A grand concert hall stage, with velvet curtains drawn, spotlights shining, and an orchestra pit visible in the foreground. The hall is empty, awaiting an audience.
 Negative Prompt: musical instruments
 
-Positive Prompt: A wide urban thoroughfare at rush hour, with distinct lanes for traffic, glowing headlights, and a large crowd of pedestrians on the sidewalks.
-Negative Prompt: cars
 
