@@ -1144,8 +1144,8 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                             new_noise_pred = (original_pred - weight_map * (noise_pred_neg - uncon_noise_pred)) 
                             self.weight_maps.append(weight_map)
                             new_norm = torch.linalg.norm(new_noise_pred, dim=1, keepdim=True) 
-                            noise_pred = uncon_noise_pred + new_noise_pred # / new_norm * original_norm
-                        else:
+                            noise_pred = uncon_noise_pred + new_noise_pred / new_norm * original_norm
+                        else: 
                             noise_pred = original_pred + uncon_noise_pred
                             
                     self.negative_guidance_scales.append(weight_map.nanmean().item())
