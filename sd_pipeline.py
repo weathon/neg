@@ -458,7 +458,8 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
             clip_prompt_embeds = torch.nn.functional.pad(
                 clip_prompt_embeds, (0, t5_prompt_embed.shape[-1] - clip_prompt_embeds.shape[-1])
             )
-
+            # print(clip_prompt_embeds.shape, t5_prompt_embed.shape)
+            
             prompt_embeds = torch.cat([clip_prompt_embeds, t5_prompt_embed], dim=-2)
             pooled_prompt_embeds = torch.cat([pooled_prompt_embed, pooled_prompt_2_embed], dim=-1)
 
@@ -1074,7 +1075,7 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
             max_sequence_length=max_sequence_length,
             lora_scale=lora_scale,
         )
-
+        # print(uncond_embed.shape)
 
         # 7. Denoising loop
         self.neg_maps = []
