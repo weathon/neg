@@ -113,7 +113,7 @@ class JointAttnProcessor2_0:
             # self.attn_weight = self.attn_weight.mean(2).unsqueeze(2) # comapre with the padding
             # self.attn_weight = torch.nn.functional.softmax(self.attn_weight, dim=-1) * self.attn_weight.mean()
             
-            self.attn_weight = self.attn_weight.softmax(dim=2)[:,:,1:self.neg_prompt_len+1].sum(2).unsqueeze(2) + self.attn_weight.softmax(dim=2)[:,:,78:78+self.neg_prompt_len_3].sum(2).unsqueeze(2)
+            self.attn_weight = self.attn_weight.softmax(dim=2)[:,:,1:self.neg_prompt_len+1].sum(2).unsqueeze(2)# + self.attn_weight.softmax(dim=2)[:,:,77:77+self.neg_prompt_len_3].sum(2).unsqueeze(2)
             
             # instead of norm against first, use softmax on text dim and see how much it grab away from "image" similar as the camflague ? still image attend to text is where trees COULD be drawn, which is good, prevent before
             # self.attn_weight = self.attn_weight / torch.linalg.norm(self.attn_weight[:,:,0:1], dim=-1, keepdim=True)
