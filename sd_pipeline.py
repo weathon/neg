@@ -28,7 +28,8 @@ from transformers import (
 from diffusers.image_processor import PipelineImageInput, VaeImageProcessor
 from diffusers.loaders import FromSingleFileMixin, SD3IPAdapterMixin, SD3LoraLoaderMixin
 from diffusers.models.autoencoders import AutoencoderKL
-from diffusers.models.transformers import SD3Transformer2DModel
+# from diffusers.models.transformers import SD3Transformer2DModel
+from sd_transformer import SD3Transformer2DModel
 from diffusers.schedulers import FlowMatchEulerDiscreteScheduler
 from diffusers.utils import (
     USE_PEFT_BACKEND,
@@ -512,7 +513,7 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                 device=device,
             )
 
-            negative_clip_prompt_embeds = torch.nn.functional.pad(
+            negative_clip_prompt_embeds = torch.nn.functional.pad( 
                 negative_clip_prompt_embeds,
                 (0, t5_negative_prompt_embed.shape[-1] - negative_clip_prompt_embeds.shape[-1]),
             )
@@ -1141,14 +1142,20 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                         if t <= self.scheduler.timesteps[start_step] and t >= self.scheduler.timesteps[end_step]:
                             original_norm = torch.linalg.norm(original_pred, dim=1, keepdim=True)
                             weight_map = (weight_map) * avoidance_factor + negative_offset # only activate when it pass a threashold
-                            weight_map = torch.clip(weight_map, 0, clamp_value)
                             weight_map = weight_map.unsqueeze(0).unsqueeze(0)
-                            pos_weight_map = self.guidance_scale * torch.clip((1 - weight_map/clamp_value) + 0.5, 0, 1)
-                            new_noise_pred = (original_pred * pos_weight_map - weight_map * (noise_pred_neg - uncon_noise_pred)) #/2 should not /2, what if 0
-                            self.weight_maps.append(weight_map)
+                            if len(self.weight_maps) != 0:
+                                last_weight_map = self.weight_maps[-1]
+                                weight_map = last_weight_map * 0.5 + weight_map * 0.5
+                                # weight_map = torch.maximum(weight_map, last_weight_map)
+                                # the attention map only lights up when drawing
+                            weight_map = weight_map * (i/self._num_timesteps) ** 0.6
+                            weight_map = torch.clip(weight_map, 0, clamp_value)
+                            new_noise_pred = (original_pred - weight_map * (noise_pred_neg - uncon_noise_pred)) #/2 should not /2, what if 0
+                            
+                            self.weight_maps.append(weight_map) 
                             # new_noise_pred = original_pred - self.guidance_scale * weight_map * (noise_pred_neg - uncon_noise_pred)
                             new_norm = torch.linalg.norm(new_noise_pred, dim=1, keepdim=True) 
-                            noise_pred = uncon_noise_pred + new_noise_pred / new_norm * original_norm
+                            noise_pred = uncon_noise_pred + new_noise_pred# / new_norm * original_norm
                         else:
                             noise_pred = original_pred + uncon_noise_pred
                             

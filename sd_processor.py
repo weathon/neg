@@ -87,6 +87,7 @@ class JointAttnProcessor2_0:
 
         # `context` projections.
         if encoder_hidden_states is not None:
+            # print(encoder_hidden_states.shape, hidden_states.shape)
             encoder_hidden_states_query_proj = attn.add_q_proj(encoder_hidden_states)
             encoder_hidden_states_key_proj = attn.add_k_proj(encoder_hidden_states)
             encoder_hidden_states_value_proj = attn.add_v_proj(encoder_hidden_states)
