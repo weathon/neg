@@ -1148,7 +1148,7 @@ class StableDiffusion3Pipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingle
                                 weight_map = last_weight_map * 0.5 + weight_map * 0.5
                                 # weight_map = torch.maximum(weight_map, last_weight_map)
                                 # the attention map only lights up when drawing
-                            weight_map = weight_map * (i/self._num_timesteps) ** 0.35
+                            weight_map = weight_map * (-(2 * i/self._num_timesteps - 1) ** 2 + 1)
                             weight_map = torch.clip(weight_map, 0, clamp_value)
                             new_noise_pred = (original_pred - weight_map * (noise_pred_neg - uncon_noise_pred)) #/2 should not /2, what if 0
                             
