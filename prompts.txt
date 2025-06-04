@@ -298,3 +298,32 @@ Negative Prompt: musical instruments
 Positive Prompt: A wide urban thoroughfare at rush hour, with distinct lanes for traffic, glowing headlights, and a large crowd of pedestrians on the sidewalks.
 Negative Prompt: cars
 
+Positive Prompt: A quiet forest path along a river, ground-level view.
+Negative Prompt: rocks
+
+Positive Prompt: A majestic mountain vista beneath clear skies.
+Negative Prompt: trees
+
+Positive Prompt: A historic downtown street lined with old brick shops at sunset.
+Negative Prompt: cars
+
+Positive Prompt: A minimalist workspace with a spacious desk and a large window.
+Negative Prompt: books
+
+Positive Prompt: A wide sandy beach at sunset with gentle waves.
+Negative Prompt: people
+
+Positive Prompt: A peaceful meadow of wildflowers under a clear sky.
+Negative Prompt: animals
+
+Positive Prompt: An old stone bridge crossing a calm river.
+Negative Prompt: boats
+
+Positive Prompt: A lively open-air market with colorful stalls at midday.
+Negative Prompt: vehicles
+
+Positive Prompt: A sleek modern kitchen with stainless steel appliances.
+Negative Prompt: faucets
+
+Positive Prompt: A narrow cobblestone alleyway with tall brick walls, evening light.
+Negative Prompt: graffiti
