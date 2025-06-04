@@ -12,11 +12,48 @@ from pydantic import BaseModel
 from sd_pipeline import StableDiffusion3Pipeline
 from sd_processor import JointAttnProcessor2_0
 
+# Global seed used for all generations
+SEED = 1989
+
 # Initialize OpenAI client
 client = OpenAI()
 
 # Example prompt pairs used for evaluation
 PROMPTS: List[Dict[str, str]] = [
+    {
+        "positive": "A modern living room designed for relaxation and entertainment, featuring comfortable seating, stylish decor, and ample natural light.",
+        "negative": "television",
+    },
+    {
+        "positive": "A large outdoor music concert at night, with a brightly lit stage and an energetic crowd, a vibrant light show illuminating the performers.",
+        "negative": "speakers",
+    },
+    {"positive": "A bustling train station interior during peak travel time.", "negative": "trains"},
+    {
+        "positive": "A bustling city square on a sunny afternoon, with many people milling about, waiting for friends or simply observing the vibrant urban life. There are areas specifically provided for people to sit and wait, providing comfort and a vantage point for people-watching.",
+        "negative": "benches",
+    },
+    {
+        "positive": "A tranquil tropical beach scene, with a gently swaying hammock tied between unseen objects, soft sand, and a clear turquoise ocean under a bright sky.",
+        "negative": "palm trees",
+    },
+    {
+        "positive": "A wide urban avenue at night, with multiple lanes stretching into the distance, overhead streetlights illuminating the asphalt, and tall buildings lining both sides.",
+        "negative": "cars",
+    },
+    {
+        "positive": "A vibrant city street at rush hour, with glowing signs, blurred streaks of light, and the warm glow of storefronts reflecting on the street.",
+        "negative": "cars",
+    },
+    {
+        "positive": "A lively sports arena filled with cheering fans, on game day, with vibrant team colors and a large scoreboard.",
+        "negative": "athletes",
+    },
+    {
+        "positive": "An iconic, bustling amusement park at twilight, with many thrilling rides illuminated against the sky, laughter and music filling the air, colorful stalls and happy visitors.",
+        "negative": "Ferris wheel",
+    },
+    {"positive": "A serene and minimalist bedroom, designed for quiet rest.", "negative": "nightstand"},
     {"positive": "A quiet forest path along a river, ground-level view.", "negative": "rocks"},
     {"positive": "A majestic mountain vista beneath clear skies.", "negative": "trees"},
     {"positive": "A historic downtown street lined with old brick shops at sunset.", "negative": "cars"},
@@ -112,6 +149,7 @@ def run() -> None:
             negative_prompt=neg,
             num_inference_steps=16,
             guidance_scale=6,
+            generator=torch.manual_seed(SEED),
             avoidance_factor=cfg.avoidance_factor,
             negative_offset=cfg.negative_offset,
             clamp_value=cfg.clamp_value,
