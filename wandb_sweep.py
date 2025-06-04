@@ -6,6 +6,8 @@ from typing import Dict, List
 import torch
 from PIL import Image
 import wandb
+import os
+import dotenv
 from openai import OpenAI
 from pydantic import BaseModel
 
@@ -15,8 +17,12 @@ from sd_processor import JointAttnProcessor2_0
 # Global seed used for all generations
 SEED = 1989
 
-# Initialize OpenAI client
-client = OpenAI()
+# Load environment variables and initialize Gemini client
+dotenv.load_dotenv()
+client = OpenAI(
+    api_key=os.getenv("GEMINI_API_KEY"),
+    base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+)
 
 # Example prompt pairs used for evaluation
 PROMPTS: List[Dict[str, str]] = [
@@ -53,17 +59,50 @@ PROMPTS: List[Dict[str, str]] = [
         "positive": "An iconic, bustling amusement park at twilight, with many thrilling rides illuminated against the sky, laughter and music filling the air, colorful stalls and happy visitors.",
         "negative": "Ferris wheel",
     },
-    {"positive": "A serene and minimalist bedroom, designed for quiet rest.", "negative": "nightstand"},
-    {"positive": "A quiet forest path along a river, ground-level view.", "negative": "rocks"},
-    {"positive": "A majestic mountain vista beneath clear skies.", "negative": "trees"},
-    {"positive": "A historic downtown street lined with old brick shops at sunset.", "negative": "cars"},
-    {"positive": "A minimalist workspace with a spacious desk and a large window.", "negative": "books"},
-    {"positive": "A wide sandy beach at sunset with gentle waves.", "negative": "people"},
-    {"positive": "A peaceful meadow of wildflowers under a clear sky.", "negative": "animals"},
-    {"positive": "An old stone bridge crossing a calm river.", "negative": "boats"},
-    {"positive": "A lively open-air market with colorful stalls at midday.", "negative": "vehicles"},
-    {"positive": "A sleek modern kitchen with stainless steel appliances.", "negative": "faucets"},
-    {"positive": "A narrow cobblestone alleyway with tall brick walls, evening light.", "negative": "graffiti"},
+    {
+        "positive": "A serene and minimalist bedroom, designed for quiet rest.",
+        "negative": "nightstand",
+    },
+    {
+        "positive": "A quiet forest path along a river, ground-level view.",
+        "negative": "rocks",
+    },
+    {
+        "positive": "A majestic mountain vista beneath clear skies.",
+        "negative": "trees",
+    },
+    {
+        "positive": "A historic downtown street lined with old brick shops at sunset.",
+        "negative": "cars",
+    },
+    {
+        "positive": "A minimalist workspace with a spacious desk and a large window.",
+        "negative": "books",
+    },
+    {
+        "positive": "A wide sandy beach at sunset with gentle waves.",
+        "negative": "people",
+    },
+    {
+        "positive": "A peaceful meadow of wildflowers under a clear sky.",
+        "negative": "animals",
+    },
+    {
+        "positive": "An old stone bridge crossing a calm river.",
+        "negative": "boats",
+    },
+    {
+        "positive": "A lively open-air market with colorful stalls at midday.",
+        "negative": "vehicles",
+    },
+    {
+        "positive": "A sleek modern kitchen with stainless steel appliances.",
+        "negative": "faucets",
+    },
+    {
+        "positive": "A narrow cobblestone alleyway with tall brick walls, evening light.",
+        "negative": "graffiti",
+    },
 ]
 
 class Score(BaseModel):
@@ -73,12 +112,12 @@ class Score(BaseModel):
 
 
 def ask_gpt(image: Image.Image, pos: str, neg: str) -> Score:
-    """Use GPT-4o to score image adherence."""
+    """Use Gemini 2.5 Flash to score image adherence."""
     buf = io.BytesIO()
     image.save(buf, format="PNG")
     b64 = base64.b64encode(buf.getvalue()).decode("utf-8")
     completion = client.chat.completions.create(
-        model="gpt-4o",
+        model="gemini-2.5-flash-preview-05-20",
         messages=[
             {
                 "role": "user",
