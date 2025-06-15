@@ -15,7 +15,7 @@ from sd_pipeline import StableDiffusion3Pipeline
 from sd_processor import JointAttnProcessor2_0
 
 # Global seed used for all generations
-SEED = 1989
+META_SEED = 1989
 
 # Load environment variables and initialize Gemini client
 dotenv.load_dotenv()
@@ -31,11 +31,6 @@ PROMPTS: List[Dict[str, str]] = [
         "negative": "television",
     },
     {
-        "positive": "A large outdoor music concert at night, with a brightly lit stage and an energetic crowd, a vibrant light show illuminating the performers.",
-        "negative": "speakers",
-    },
-    {"positive": "A bustling train station interior during peak travel time.", "negative": "trains"},
-    {
         "positive": "A bustling city square on a sunny afternoon, with many people milling about, waiting for friends or simply observing the vibrant urban life. There are areas specifically provided for people to sit and wait, providing comfort and a vantage point for people-watching.",
         "negative": "benches",
     },
@@ -48,62 +43,71 @@ PROMPTS: List[Dict[str, str]] = [
         "negative": "cars",
     },
     {
-        "positive": "A vibrant city street at rush hour, with glowing signs, blurred streaks of light, and the warm glow of storefronts reflecting on the street.",
-        "negative": "cars",
-    },
-    {
-        "positive": "A lively sports arena filled with cheering fans, on game day, with vibrant team colors and a large scoreboard.",
-        "negative": "athletes",
+        "positive": "A cozy cafe interior, warm lighting, wooden tables, a cup with steam rising on one of the tables, a few empty chairs.",
+        "negative": "coffee",
     },
     {
         "positive": "An iconic, bustling amusement park at twilight, with many thrilling rides illuminated against the sky, laughter and music filling the air, colorful stalls and happy visitors.",
         "negative": "Ferris wheel",
     },
     {
+        "positive": "A comfortable bed in a bedroom",
+        "negative": "pillows",
+    },
+    {
+        "positive": "A comfortable living room with a large sofa, a coffee table, and a modern TV stand.",
+        "negative": "television, TV screen",
+    },
+    {
         "positive": "A serene and minimalist bedroom, designed for quiet rest.",
         "negative": "nightstand",
     },
     {
-        "positive": "A quiet forest path along a river, ground-level view.",
-        "negative": "rocks",
+        "positive": "A living room, setup for casual relaxation, with a large comfortable sofa facing a dedicated viewing wall.",
+        "negative": "television",
     },
     {
-        "positive": "A majestic mountain vista beneath clear skies.",
-        "negative": "trees",
+        "positive": "A vibrant tropical beach scene, clear blue water, white sand, bright sunshine",
+        "negative": "palm trees",
     },
     {
-        "positive": "A historic downtown street lined with old brick shops at sunset.",
-        "negative": "cars",
+        "positive": "A grand classical concert hall interior, ornate architecture, empty seats, high ceilings, elegant design, with a brightly lit stage awaiting an orchestra.",
+        "negative": "musical instruments",
     },
     {
-        "positive": "A minimalist workspace with a spacious desk and a large window.",
-        "negative": "books",
+        "positive": "A cozy living room",
+        "negative": "sofa",
     },
     {
-        "positive": "A wide sandy beach at sunset with gentle waves.",
-        "negative": "people",
+        "positive": "A modern family room designed for relaxation and entertainment, featuring a large wall, comfortable sectionals, and ambient lighting.",
+        "negative": "television",
     },
     {
-        "positive": "A peaceful meadow of wildflowers under a clear sky.",
-        "negative": "animals",
+        "positive": "A modern, well-lit living room with sleek furniture, a large entertainment console, and comfortable seating. There are large windows with a city view.",
+        "negative": "television",
     },
     {
-        "positive": "An old stone bridge crossing a calm river.",
-        "negative": "boats",
+        "positive": "A bustling outdoor market scene under a clear sky, with many colorful stalls and people browsing.",
+        "negative": "canopies",
     },
     {
-        "positive": "A lively open-air market with colorful stalls at midday.",
+        "positive": "A comfortable living room space, inviting atmosphere, plenty of seating arrangements for guests, a coffee table in the center, and a large fireplace.",
+        "negative": "sofa",
+    },
+    {
+        "positive": "A cozy living room with a fireplace and warm lighting, featuring comfortable armchairs and a coffee table.",
+        "negative": "sofa",
+    },
+    {
+        "positive": "A modern, spacious living room, designed for family entertainment, with a large, comfortable sectional sofa facing a prominent wall, sleek minimalist decor, soft ambient lighting, a coffee table with remote controls, and a soundbar.",
+        "negative": "television",
+    },
+    {
+        "positive": "A sprawling urban cityscape at night, viewed from above, with illuminated skyscrapers and intricate street patterns.",
         "negative": "vehicles",
     },
-    {
-        "positive": "A sleek modern kitchen with stainless steel appliances.",
-        "negative": "faucets",
-    },
-    {
-        "positive": "A narrow cobblestone alleyway with tall brick walls, evening light.",
-        "negative": "graffiti",
-    },
 ]
+
 
 class Score(BaseModel):
     positive: float
@@ -129,7 +133,7 @@ def ask_gpt(image: Image.Image, pos: str, neg: str) -> Score:
                             + pos
                             + "', how well it avoids the negative prompt '"
                             + neg
-                            + "' (10 means completely absent), and its overall quality."
+                            + "' (10 means completely absent), and its overall quality, note for weird artificts and how unnature it looks"
                             "Use the provided function to record your scores."
                         ),
                     },
@@ -171,24 +175,25 @@ def load_pipe() -> StableDiffusion3Pipeline:
 
 
 pipe = load_pipe()
-
+import random
 
 def run() -> None:
     wandb.init(project="sd3-sweep")
     cfg = wandb.config
     scores = []
-
+    random.seed(META_SEED)
     for pair in PROMPTS:
         pos = pair["positive"]
         neg = pair["negative"]
         for block in pipe.transformer.transformer_blocks:
             block.attn.processor.neg_prompt_len = len(pipe.tokenizer.tokenize(neg)) + 1
+        seed = random.randint(0, 2**32 - 1)
         image = pipe(
             pos,
             negative_prompt=neg,
-            num_inference_steps=16,
+            num_inference_steps=30,
             guidance_scale=6,
-            generator=torch.manual_seed(SEED),
+            generator=torch.manual_seed(seed),
             avoidance_factor=cfg.avoidance_factor,
             negative_offset=cfg.negative_offset,
             clamp_value=cfg.clamp_value,
@@ -211,14 +216,14 @@ def run() -> None:
 
 
 sweep_config = {
-    "method": "bayes",
+    "method": "random",
     "metric": {"goal": "maximize", "name": "mean_score"},
     "parameters": {
-        "avoidance_factor": {"min": 1900.0, "max": 5700.0, "distribution": "uniform"},
-        "negative_offset": {"min": -0.1125, "max": -0.0375, "distribution": "uniform"},
-        "clamp_value": {"min": 15.0, "max": 45.0, "distribution": "uniform"},
-        "start_step": {"min": 1, "max": 5, "distribution": "int_uniform"},
-        "end_step": {"min": -3, "max": -1, "distribution": "int_uniform"},
+        "avoidance_factor": {"min": 1500.0, "max": 7000.0, "distribution": "uniform"},
+        "negative_offset": {"min": -0.2, "max": -0.0, "distribution": "uniform"},
+        "clamp_value": {"min": 10.0, "max": 60.0, "distribution": "uniform"},
+        "start_step": {"min": 1, "max": 6, "distribution": "int_uniform"},
+        "end_step": {"min": -6, "max": -1, "distribution": "int_uniform"},
     },
 }
 

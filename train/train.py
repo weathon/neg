@@ -88,7 +88,7 @@ def process_image_with_grad(image, image_mean, image_std):
     return image
     
     
-optimizer = torch.optim.AdamW(adapter.parameters(), lr=5e-5)
+optimizer = torch.optim.AdamW(adapter.parameters(), lr=1e-5)
 pipe.transformer.enable_gradient_checkpointing()
 
 
